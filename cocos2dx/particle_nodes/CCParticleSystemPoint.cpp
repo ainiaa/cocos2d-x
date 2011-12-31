@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 namespace cocos2d {
 
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_LINUX) && (CC_TARGET_PLATFORM != CC_PLATFORM_QNX)
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_LINUX) && (CC_TARGET_PLATFORM != CC_PLATFORM_QNX) && (CC_TARGET_PLATFORM != CC_PLATFORM_QT)
 
 //implementation CCParticleSystemPoint
 bool CCParticleSystemPoint::initWithTotalParticles(unsigned int numberOfParticles)
@@ -45,12 +45,12 @@ bool CCParticleSystemPoint::initWithTotalParticles(unsigned int numberOfParticle
 		}
 
 #if CC_USES_VBO
-		glGenBuffers(1, &m_uVerticesID);
+		ccglGenBuffers(1, &m_uVerticesID);
 
 		// initial binding
-		glBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(ccPointSprite)*m_uTotalParticles, m_pVertices, GL_DYNAMIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		ccglBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
+		ccglBufferData(GL_ARRAY_BUFFER, sizeof(ccPointSprite)*m_uTotalParticles, m_pVertices, GL_DYNAMIC_DRAW);
+		ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 		return true;
 	}
@@ -60,7 +60,7 @@ CCParticleSystemPoint::~CCParticleSystemPoint()
 {
     CC_SAFE_DELETE(m_pVertices);
 #if CC_USES_VBO
-	glDeleteBuffers(1, &m_uVerticesID);
+	ccglDeleteBuffers(1, &m_uVerticesID);
 #endif
 }
 
@@ -89,9 +89,9 @@ void CCParticleSystemPoint::updateQuadWithParticle(tCCParticle* particle, const 
 void CCParticleSystemPoint::postStep()
 {
 #if CC_USES_VBO
-	glBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(ccPointSprite)*m_uParticleCount, m_pVertices);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
+	ccglBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(ccPointSprite)*m_uParticleCount, m_pVertices);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 }
 void CCParticleSystemPoint::draw()
@@ -110,25 +110,25 @@ void CCParticleSystemPoint::draw()
 
 	glBindTexture(GL_TEXTURE_2D, m_pTexture->getName());
 
-	glEnable(GL_POINT_SPRITE_OES);
-	glTexEnvi( GL_POINT_SPRITE_OES, GL_COORD_REPLACE_OES, GL_TRUE );	
+	glEnable(CC_GL_POINT_SPRITE);
+	glTexEnvi( CC_GL_POINT_SPRITE, CC_GL_COORD_REPLACE, GL_TRUE );	
 
 #define kPointSize sizeof(m_pVertices[0])
 
 #if CC_USES_VBO
-	glBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
+	ccglBindBuffer(GL_ARRAY_BUFFER, m_uVerticesID);
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
-    glBufferData(GL_ARRAY_BUFFER, sizeof(ccPointSprite)*m_uTotalParticles, m_pVertices, GL_DYNAMIC_DRAW);
+    ccglBufferData(GL_ARRAY_BUFFER, sizeof(ccPointSprite)*m_uTotalParticles, m_pVertices, GL_DYNAMIC_DRAW);
 #endif
 
 	glVertexPointer(2,GL_FLOAT,kPointSize,0);
 
 	glColorPointer(4, GL_UNSIGNED_BYTE, kPointSize,(GLvoid*)offsetof(ccPointSprite,color) );
 
-	glEnableClientState(GL_POINT_SIZE_ARRAY_OES);
+	glEnableClientState(CC_GL_POINT_SIZE_ARRAY);
 
-	glPointSizePointerOES(GL_FLOAT,kPointSize,(GLvoid*) offsetof(ccPointSprite,size) );
+	ccglglPointSizePointer(GL_FLOAT,kPointSize,(GLvoid*) offsetof(ccPointSprite,size) );
 
 #else // Uses Vertex Array List
     int offset = (int)m_pVertices;
@@ -137,9 +137,9 @@ void CCParticleSystemPoint::draw()
     int diff = offsetof(ccPointSprite, color);
     glColorPointer(4, GL_UNSIGNED_BYTE, kPointSize, (GLvoid*) (offset+diff));
 
-    glEnableClientState(GL_POINT_SIZE_ARRAY_OES);
+    glEnableClientState(CC_GL_POINT_SIZE_ARRAY);
     diff = offsetof(ccPointSprite, size);
-    glPointSizePointerOES(GL_FLOAT, kPointSize, (GLvoid*) (offset+diff));
+    ccglglPointSizePointer(GL_FLOAT, kPointSize, (GLvoid*) (offset+diff));
 #endif 
 
     bool newBlend = (m_tBlendFunc.src != CC_BLEND_SRC || m_tBlendFunc.dst != CC_BLEND_DST) ? true : false;
@@ -156,11 +156,11 @@ void CCParticleSystemPoint::draw()
 
 #if CC_USES_VBO
 	// unbind VBO buffer
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 
-	glDisableClientState(GL_POINT_SIZE_ARRAY_OES);
-	glDisable(GL_POINT_SPRITE_OES);
+	glDisableClientState(CC_GL_POINT_SIZE_ARRAY);
+	glDisable(CC_GL_POINT_SPRITE);
 
 	// restore GL default state
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);

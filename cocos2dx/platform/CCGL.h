@@ -32,8 +32,29 @@ THE SOFTWARE.
 #include "CCEGLView.h"
 
 #define CC_GLVIEW                   cocos2d::CCEGLView
+
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_LINUX) && (CC_TARGET_PLATFORM != CC_PLATFORM_QT)
 #define ccglOrtho					glOrthof
 #define	ccglClearDepth				glClearDepthf
+#define ccglTranslate				glTranslatef
+
+#define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER_OES
+#define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING_OES
+#define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0_OES
+#define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE_OES
+#define CC_GL_POINT_SPRITE          GL_POINT_SPRITE_OES
+#define CC_GL_COORD_REPLACE         GL_COORD_REPLACE_OES
+#define CC_GL_POINT_SIZE_ARRAY      GL_POINT_SIZE_ARRAY_OES
+
+#define ccglFrustum                 glFrustumf
+#define ccglGenBuffers              glGenBuffers
+#define ccglBindBuffer              glBindBuffer
+#define ccglBufferData              glBufferData
+#define ccglBufferSubData           glBufferSubData
+#define ccglDeleteBuffers           glDeleteBuffers
+#define ccglglPointSizePointer      glPointSizePointerOES
+#endif
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
 #define ccglGenerateMipmap			CCEGLView::glGenerateMipmapOES
 #define ccglGenFramebuffers			CCEGLView::glGenFramebuffersOES
@@ -41,7 +62,62 @@ THE SOFTWARE.
 #define ccglFramebufferTexture2D	CCEGLView::glFramebufferTexture2DOES
 #define ccglDeleteFramebuffers		CCEGLView::glDeleteFramebuffersOES
 #define ccglCheckFramebufferStatus	CCEGLView::glCheckFramebufferStatusOES
-#else
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#define ccglGenerateMipmap			glGenerateMipmapEXT
+#define ccglGenFramebuffers			glGenFramebuffersEXT
+#define ccglBindFramebuffer			glBindFramebufferEXT
+#define ccglFramebufferTexture2D	glFramebufferTexture2DEXT
+#define ccglDeleteFramebuffers		glDeleteFramebuffersEXT
+#define ccglCheckFramebufferStatus	glCheckFramebufferStatusEXT
+
+#define ccglOrtho					glOrtho
+#define	ccglClearDepth				glClearDepth
+#define ccglTranslate				glTranslated
+
+#define ccglGenBuffers              glGenBuffersARB
+#define ccglBindBuffer              glBindBufferARB
+#define ccglBufferData              glBufferDataARB
+#define ccglBufferSubData           glBufferSubDataARB
+#define ccglDeleteBuffers           glDeleteBuffersARB
+
+#define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER
+#define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING
+#define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0
+#define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE
+#define CC_GL_POINT_SPRITE          GL_POINT_SPRITE_ARB
+#define CC_GL_COORD_REPLACE         GL_COORD_REPLACE_ARB
+#define CC_GL_POINT_SIZE_ARRAY      GL_POINT_SIZE
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+#define ccglOrtho					glOrtho
+#define	ccglClearDepth				glClearDepth
+#define ccglTranslate				glTranslate
+#define ccglGenerateMipmap			glGenerateMipmap
+#define ccglGenFramebuffers			glGenFramebuffers
+#define ccglBindFramebuffer			glBindFramebuffer
+#define ccglFramebufferTexture2D	glFramebufferTexture2D
+#define ccglDeleteFramebuffers		glDeleteFramebuffers
+#define ccglCheckFramebufferStatus	glCheckFramebufferStatus
+
+#define ccglFrustum                 glFrustum
+
+#define ccglGenBuffers              glGenBuffers
+#define ccglBindBuffer              glBindBuffer
+#define ccglBufferData              glBufferData
+#define ccglBufferSubData           glBufferSubData
+#define ccglDeleteBuffers           glDeleteBuffers
+#define ccglglPointSizePointer      glPointSizePointer
+
+#define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER
+#define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING
+#define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0
+#define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE
+#define CC_GL_POINT_SPRITE          GL_POINT_SPRITE_ARB
+#define CC_GL_COORD_REPLACE         GL_COORD_REPLACE_ARB
+#define CC_GL_POINT_SIZE_ARRAY      GL_POINT_SIZE
+
+#else   // other os using GLES
 #define ccglGenerateMipmap			glGenerateMipmapOES
 #define ccglGenFramebuffers			glGenFramebuffersOES
 #define ccglBindFramebuffer			glBindFramebufferOES
@@ -49,12 +125,6 @@ THE SOFTWARE.
 #define ccglDeleteFramebuffers		glDeleteFramebuffersOES
 #define ccglCheckFramebufferStatus	glCheckFramebufferStatusOES
 #endif
-#define ccglTranslate				glTranslatef
-
-#define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER_OES
-#define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING_OES
-#define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0_OES
-#define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE_OES
 
 #include "CCCommon.h"
 
@@ -102,52 +172,13 @@ extern PFNGLBINDBUFFERARBPROC 				glBindBufferARB;
 extern PFNGLBUFFERDATAARBPROC 				glBufferDataARB;
 extern PFNGLBUFFERSUBDATAARBPROC 			glBufferSubDataARB;
 extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
+#endif
 
-
-
-
-#undef ccglOrtho
-#undef ccglClearDepth
-#undef ccglTranslate
-#undef ccglGenerateMipmap
-#undef ccglGenFramebuffers
-#undef ccglBindFramebuffer
-#undef ccglFramebufferTexture2D
-#undef ccglDeleteFramebuffers
-#undef ccglCheckFramebufferStatus
-
-#undef CC_GL_FRAMEBUFFER
-#undef CC_GL_FRAMEBUFFER_BINDING
-#undef CC_GL_COLOR_ATTACHMENT0
-#undef CC_GL_FRAMEBUFFER_COMPLETE
-
-#define ccglOrtho					glOrtho
-#define	ccglClearDepth				glClearDepth
-#define ccglTranslate				glTranslated
-
-#define ccglGenerateMipmap			glGenerateMipmapEXT
-#define ccglGenFramebuffers			glGenFramebuffersEXT
-#define ccglBindFramebuffer			glBindFramebufferEXT
-#define ccglFramebufferTexture2D	glFramebufferTexture2DEXT
-#define ccglDeleteFramebuffers		glDeleteFramebuffersEXT
-#define ccglCheckFramebufferStatus	glCheckFramebufferStatusEXT
-
-
-#define glFrustumf                  glFrustum
-#define glGenBuffers                glGenBuffersARB
-#define glBindBuffer                glBindBufferARB
-#define glBufferData                glBufferDataARB
-#define glBufferSubData             glBufferSubDataARB
-#define glDeleteBuffers             glDeleteBuffersARB
-
-#define CC_GL_FRAMEBUFFER			GL_FRAMEBUFFER
-#define CC_GL_FRAMEBUFFER_BINDING	GL_FRAMEBUFFER_BINDING
-#define CC_GL_COLOR_ATTACHMENT0		GL_COLOR_ATTACHMENT0
-#define CC_GL_FRAMEBUFFER_COMPLETE	GL_FRAMEBUFFER_COMPLETE
-
-#define GL_POINT_SPRITE_OES         GL_POINT_SPRITE_ARB
-#define GL_COORD_REPLACE_OES        GL_COORD_REPLACE_ARB
-#define GL_POINT_SIZE_ARRAY_OES     GL_POINT_SIZE
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+#include <GL/glew.h>
+#include <GL/wglew.h>
+// #include <QtCore/qglobal.h>
+//#include <QtOpenGL/qgl.h>
 #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
@@ -162,6 +193,10 @@ extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
 #include <GLES/gl.h>
 #include <GLES/glext.h>
+#endif
+
+#ifndef M_PI
+	#define M_PI       3.14159265358979323846
 #endif
 
 NS_CC_BEGIN;

@@ -71,12 +71,12 @@ bool CCParticleSystemQuad::initWithTotalParticles(unsigned int numberOfParticles
 		glEnable(GL_VERTEX_ARRAY);
 
 		// create the VBO buffer
-		glGenBuffers(1, &m_uQuadsID);
+		ccglGenBuffers(1, &m_uQuadsID);
 
 		// initial binding
-		glBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		ccglBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
+		ccglBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);
+		ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 		return true;
 	}
@@ -87,7 +87,7 @@ CCParticleSystemQuad::~CCParticleSystemQuad()
 	CC_SAFE_DELETE_ARRAY(m_pQuads);
 	CC_SAFE_DELETE_ARRAY(m_pIndices);
 #if CC_USES_VBO
-    glDeleteBuffers(1, &m_uQuadsID);
+    ccglDeleteBuffers(1, &m_uQuadsID);
 #endif
 }
 
@@ -267,9 +267,9 @@ void CCParticleSystemQuad::updateQuadWithParticle(tCCParticle* particle, const C
 void CCParticleSystemQuad::postStep()
 {
 #if CC_USES_VBO
-	glBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(m_pQuads[0])*m_uParticleCount, m_pQuads);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
+	ccglBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(m_pQuads[0])*m_uParticleCount, m_pQuads);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 }
 
@@ -285,10 +285,10 @@ void CCParticleSystemQuad::draw()
 #define kQuadSize sizeof(m_pQuads[0].bl)
 
 #if CC_USES_VBO
-    glBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
+    ccglBindBuffer(GL_ARRAY_BUFFER, m_uQuadsID);
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
-    glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);	
+    ccglBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*m_uTotalParticles, m_pQuads, GL_DYNAMIC_DRAW);	
 #endif
 
 	glVertexPointer(2,GL_FLOAT, kQuadSize, 0);
@@ -329,7 +329,7 @@ void CCParticleSystemQuad::draw()
 		glBlendFunc( CC_BLEND_SRC, CC_BLEND_DST );
 
 #if CC_USES_VBO
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif
 
 	// restore GL default state

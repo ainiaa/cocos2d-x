@@ -159,4 +159,8 @@ int CC_DLL gettimeofday(struct timeval *, struct timezone *);
 
 #endif  // CC_TARGET_PLATFORM == CC_PLATFORM_BADA
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+#include <QtCore/QTime>
+#endif  // CC_TARGET_PLATFORM == CC_PLATFORM_QT
+
 #endif  // __CC_STD_C_H__

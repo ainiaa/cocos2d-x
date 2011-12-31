@@ -57,7 +57,7 @@ CCTextureAtlas::~CCTextureAtlas()
 	CC_SAFE_FREE(m_pIndices)
 
 #if CC_USES_VBO
-	glDeleteBuffers(2, m_pBuffersVBO);
+	ccglDeleteBuffers(2, m_pBuffersVBO);
 #endif // CC_USES_VBO
 
 	CC_SAFE_RELEASE(m_pTexture);
@@ -168,7 +168,7 @@ bool CCTextureAtlas::initWithTexture(CCTexture2D *texture, unsigned int capacity
 
 #if CC_USES_VBO
 	// initial binding
-	glGenBuffers(2, &m_pBuffersVBO[0]);	
+	ccglGenBuffers(2, &m_pBuffersVBO[0]);	
 	m_bDirty = true;
 #endif // CC_USES_VBO
 
@@ -215,12 +215,12 @@ void CCTextureAtlas::initIndices()
 	}
 
 #if CC_USES_VBO
-	glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uCapacity, m_pQuads, GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uCapacity * 6, m_pIndices, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
+	ccglBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uCapacity, m_pQuads, GL_DYNAMIC_DRAW);
+	ccglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
+	ccglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uCapacity * 6, m_pIndices, GL_STATIC_DRAW);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 #endif // CC_USES_VBO
 }
 
@@ -362,9 +362,9 @@ bool CCTextureAtlas::resizeCapacity(unsigned int newCapacity)
 	m_pIndices = (GLushort *)tmpIndices;
 
 #if CC_USES_VBO
-	glDeleteBuffers(2, m_pBuffersVBO);
+	ccglDeleteBuffers(2, m_pBuffersVBO);
 	// initial binding
-	glGenBuffers(2, &m_pBuffersVBO[0]);	
+	ccglGenBuffers(2, &m_pBuffersVBO[0]);	
 	m_bDirty = true;
 #endif // CC_USES_VBO
 
@@ -404,16 +404,16 @@ void CCTextureAtlas::drawNumberOfQuads(unsigned int n, unsigned int start)
 
 #if CC_USES_VBO
 
-    glBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
+    ccglBindBuffer(GL_ARRAY_BUFFER, m_pBuffersVBO[0]);
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
-    glBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uCapacity, m_pQuads, GL_DYNAMIC_DRAW);
+    ccglBufferData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * m_uCapacity, m_pQuads, GL_DYNAMIC_DRAW);
 #endif
 
 	// XXX: update is done in draw... perhaps it should be done in a timer
 	if (m_bDirty)
 	{
-		glBufferSubData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * start, sizeof(m_pQuads[0]) * n, &m_pQuads[start]);
+		ccglBufferSubData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0]) * start, sizeof(m_pQuads[0]) * n, &m_pQuads[start]);
 		m_bDirty = false;
 	}
 	
@@ -427,10 +427,10 @@ void CCTextureAtlas::drawNumberOfQuads(unsigned int n, unsigned int start)
 	// texture coords
 	glTexCoordPointer(2, GL_FLOAT, kQuadSize, (GLvoid*) offsetof( ccV3F_C4B_T2F, texCoords));
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
+	ccglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_pBuffersVBO[1]);
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uCapacity * 6, m_pIndices, GL_STATIC_DRAW);
+    ccglBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(m_pIndices[0]) * m_uCapacity * 6, m_pIndices, GL_STATIC_DRAW);
 #endif
 
 #if CC_TEXTURE_ATLAS_USE_TRIANGLE_STRIP
@@ -439,8 +439,8 @@ void CCTextureAtlas::drawNumberOfQuads(unsigned int n, unsigned int start)
 	glDrawElements(GL_TRIANGLES, (GLsizei)n*6, GL_UNSIGNED_SHORT, (GLvoid*)(start * 6 * sizeof(m_pIndices[0]))); 
 #endif // CC_USES_VBO
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ARRAY_BUFFER, 0);
+	ccglBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 #else // ! CC_USES_VBO
 	

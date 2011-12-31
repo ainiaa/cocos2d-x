@@ -210,4 +210,13 @@ public: inline void set##funName(const varType& var){ varName = var; }
 
 #endif  // wophone VM
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    #undef CC_DLL
+    #if defined(_USRDLL)
+        #define CC_DLL     __declspec(dllexport)
+    #else 		/* use a DLL library */
+        #define CC_DLL     __declspec(dllimport)
+    #endif
+#endif // QT
+
 #endif // __CC_PLATFORM_MACROS_H__

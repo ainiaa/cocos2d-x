@@ -43,6 +43,8 @@ THE SOFTWARE.
 	#include "bada/CCEGLView_bada.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
     #include "qnx/CCEGLView_qnx.h"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    #include "qt/CCEGLView_qt.h"
 #else
     #error
 #endif
