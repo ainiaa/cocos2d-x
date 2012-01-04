@@ -108,7 +108,7 @@ build for which target platform
     #define CC_TARGET_PLATFORM     CC_PLATFORM_QNX
 #endif
 
-#if defined(QT)
+#if ! CC_TARGET_PLATFORM && defined(__QT__)
 #undef CC_TARGET_PLATFORM
 #define CC_TARGET_PLATFORM         CC_PLATFORM_QT
 #endif
@@ -155,6 +155,11 @@ build for which target platform
 #if defined(CC_UNDER_QNX)
 #undef  CC_TARGET_PLATFORM
 #define CC_TARGET_PLATFORM        	  CC_PLATFORM_QNX
+#endif
+
+#if defined(CC_UNDER_QT)
+#undef  CC_TARGET_PLATFORM
+#define CC_TARGET_PLATFORM        	  CC_PLATFORM_QT
 #endif
 
 // Check user assigned supportive of multi-thread

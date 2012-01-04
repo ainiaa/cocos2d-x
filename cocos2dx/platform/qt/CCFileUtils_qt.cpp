@@ -1,16 +1,32 @@
-/*
- * CCFileUtils_Linux.cpp
- *
- *  Created on: Aug 9, 2011
- *      Author: laschweinski
- */
+/****************************************************************************
+Copyright (c) 2012 cocos2d-x.org
+
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
+
 #include "CCCommon.h"
 #include "ccMacros.h"
 
 #include "CCFileUtils.h"
 #include "CCString.h"
-
-#include <unistd.h>
 
 using namespace std;
 
@@ -19,14 +35,7 @@ NS_CC_BEGIN;
 static string s_strResourcePath = "";
 
 void CCFileUtils::setResourcePath(const char* pszResourcePath) {
-	CCAssert(pszResourcePath != NULL, "[FileUtils setResourcePath] -- wrong resource path");
-
-//	s_strResourcePath = pszResourcePath;
-	/* Sets current directory */
-	if(chdir(pszResourcePath) < 0)
-	{
-		CCLog("set base folder error");
-	}
+    CCAssert(0, "Have not implement!");
 }
 
 const char* CCFileUtils::fullPathFromRelativePath(const char *pszRelativePath) {
@@ -34,7 +43,6 @@ const char* CCFileUtils::fullPathFromRelativePath(const char *pszRelativePath) {
 	pRet->autorelease();
 	pRet->m_sString = s_strResourcePath + pszRelativePath;
 	return pRet->m_sString.c_str();
-
 }
 
 const char *CCFileUtils::fullPathFromRelativeFile(const char *pszFilename, const char *pszRelativeFile) {

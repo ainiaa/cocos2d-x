@@ -92,7 +92,7 @@ THE SOFTWARE.
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
 #define ccglOrtho					glOrtho
 #define	ccglClearDepth				glClearDepth
-#define ccglTranslate				glTranslate
+#define ccglTranslate				glTranslated
 #define ccglGenerateMipmap			glGenerateMipmap
 #define ccglGenFramebuffers			glGenFramebuffers
 #define ccglBindFramebuffer			glBindFramebuffer
@@ -174,13 +174,6 @@ extern PFNGLBUFFERSUBDATAARBPROC 			glBufferSubDataARB;
 extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
 #endif
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-#include <GL/glew.h>
-#include <GL/wglew.h>
-// #include <QtCore/qglobal.h>
-//#include <QtOpenGL/qgl.h>
-#endif
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
 #include <IwGL.h>
 #endif
@@ -193,6 +186,11 @@ extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
 #include <GLES/gl.h>
 #include <GLES/glext.h>
+#endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+#include <GL/glew.h>
+#include <GL/wglew.h>
 #endif
 
 #ifndef M_PI

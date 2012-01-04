@@ -323,3 +323,23 @@ void CCMessageBox(const char * pszMsg, const char * pszTitle)
 NS_CC_END;
 
 #endif // CC_PLATFORM_QNX
+
+/****************************************************
+ * qt
+ ***************************************************/
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+NS_CC_BEGIN;
+
+void CCLog(const char * pszFormat, ...)
+{
+    // do nothing
+}
+
+void CCMessageBox(const char * pszMsg, const char * pszTitle)
+{
+	CCLog("%s: %s", pszTitle, pszMsg);
+}
+
+NS_CC_END;
+
+#endif // CC_PLATFORM_QT

@@ -160,7 +160,28 @@ int CC_DLL gettimeofday(struct timeval *, struct timezone *);
 #endif  // CC_TARGET_PLATFORM == CC_PLATFORM_BADA
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-#include <QtCore/QTime>
+#include <QtCore/QDateTime>
+#include <QtCore/qnumeric.h>
+
+#ifndef MIN
+#define MIN(x,y) (((x) > (y)) ? (y) : (x))
+#endif  // MIN
+
+#ifndef MAX
+#define MAX(x,y) (((x) < (y)) ? (y) : (x))
+#endif  // MAX
+
+#if ! defined(isnan)
+    #define isnan   qIsNaN
+#endif
+
+struct timeval {
+    long    tv_sec;         /* seconds */
+    long    tv_usec;        /* and microseconds */
+};
+
+int CC_DLL gettimeofday(struct timeval *, struct timezone *);
+
 #endif  // CC_TARGET_PLATFORM == CC_PLATFORM_QT
 
 #endif  // __CC_STD_C_H__

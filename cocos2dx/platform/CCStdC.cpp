@@ -63,6 +63,17 @@ int CC_DLL gettimeofday(struct timeval * val, struct timezone *)
     }
     return 0;
 }
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+int CC_DLL gettimeofday(struct timeval * val, struct timezone *)
+{
+    if (val)
+    {
+        qint64 ms = QDateTime::currentMSecsSinceEpoch();
+        val->tv_sec = ms / 1000;
+    	val->tv_usec = (ms % 1000) * 1000;
+    }
+    return 0;
+}
 
 
 #endif  // CC_PLATFORM_WIN32

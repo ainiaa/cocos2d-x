@@ -13,7 +13,10 @@ HEADERS += \
     ../platform/CCCommon.h \
     ../platform/CCArchOptimalParticleSystem.h \
     ../platform/CCApplication_platform.h \
-    ../platform/CCAccelerometer_platform.h
+    ../platform/CCAccelerometer_platform.h \
+    ../platform/qt/CCEGLView_qt.h \
+    ../platform/qt/CCAccelerometer_qt.h \
+    ../platform/qt/CCApplication_qt.h
 
 SOURCES += \
     ../platform/platform.cpp \
@@ -23,4 +26,7 @@ SOURCES += \
     ../platform/CCImage.cpp \
     ../platform/CCGL.cpp \
     ../platform/CCFileUtils.cpp \
-    ../platform/CCCommon.cpp
+    ../platform/CCCommon.cpp \
+    ../platform/qt/CCFileUtils_qt.cpp \
+    ../platform/qt/CCEGLView_qt.cpp \
+    ../platform/qt/CCApplication_qt.cpp
