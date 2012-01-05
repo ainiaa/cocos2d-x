@@ -22,11 +22,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#ifndef CCEGLVIEWLINUX_H_
-#define CCEGLVIEWLINUX_H_
+#ifndef CCEGLVIEWQT_H_
+#define CCEGLVIEWQT_H_
 
 #include "CCCommon.h"
 #include "CCGeometry.h"
+#include "CCDirector.h"
+#include <QtCore/QTimer>
+#include <QGLWidget>
+
+class GLWidget : public QGLWidget
+{
+    Q_OBJECT
+
+public:
+    GLWidget() : QGLWidget(QGLFormat(QGL::SampleBuffers))
+    {
+        QTimer *timer = new QTimer(this);
+        connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+        timer->start(1000 / 60);
+    }
+
+public slots:
+    void update()
+    {
+        cocos2d::CCDirector::sharedDirector()->mainLoop();
+    }
+};
 
 NS_CC_BEGIN;
 
@@ -34,17 +56,15 @@ class CCSet;
 class CCTouch;
 class EGLTouchDelegate;
 
-class CCEGLView {
+class CC_DLL CCEGLView {
 public:
 	CCEGLView();
 	virtual ~CCEGLView();
 
 	/**
-	 * iPixelWidth, height: the window's size
-	 * iWidth ,height: the point size, which may scale.
-	 * iDepth is not the buffer depth of opengl, it indicate how may bits for a pixel
+     * iWidth ,height: the window's size
 	 */
-	virtual bool Create(const char* pTitle, int iPixelWidth, int iPixelHeight, int iWidth, int iHeight, int iDepth=16);
+    virtual bool Create(int iWidth, int iHeight);
 
 	CCSize getSize();
 	bool isOpenGLReady();
@@ -59,14 +79,6 @@ public:
 	void setScissorInPoints(float x, float y, float w, float h);
 
 	void setIMEKeyboardState(bool bOpen);
-
-//	void resize(int width, int height);
-
-	/**
-	 * not essential
-	 */
-//	void centerWindow();
-//	void setScreenScale(float factor);
 
 	/**
 	 * the width and height is the real size of phone
@@ -90,7 +102,6 @@ private:
 
 	EGLTouchDelegate * m_pDelegate;
 
-	CCSize m_sSizeInPixel;
 	CCSize m_sSizeInPoint;
 	CCRect m_rcViewPort;
 
@@ -101,4 +112,4 @@ private:
 
 NS_CC_END;
 
-#endif /* CCEGLVIEWLINUX_H_ */
+#endif /* CCEGLVIEWQT_H_ */

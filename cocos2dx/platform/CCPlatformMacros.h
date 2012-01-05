@@ -154,7 +154,7 @@ public: inline void set##funName(const varType& var){ varName = var; }
 #endif // COCOS2D_DEBUG
 
 // shared library declartor
-#define CC_DLL 
+#define CC_DLL
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
 // assertion
@@ -211,11 +211,12 @@ public: inline void set##funName(const varType& var){ varName = var; }
 #endif  // wophone VM
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+#include <QtCore/qglobal.h>
     #undef CC_DLL
     #if defined(_USRDLL)
-        #define CC_DLL     __declspec(dllexport)
+        #define CC_DLL     Q_DECL_EXPORT
     #else 		/* use a DLL library */
-        #define CC_DLL     __declspec(dllimport)
+        #define CC_DLL     Q_DECL_IMPORT
     #endif
 #endif // QT
 

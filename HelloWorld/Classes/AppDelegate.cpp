@@ -7,9 +7,14 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+AppDelegate::AppDelegate(int argc, char *argv[]) : CCApplication(argc, argv)
+{
 }
+#else
+AppDelegate::AppDelegate() {
+}
+#endif
 
 AppDelegate::~AppDelegate() {
 }
@@ -87,7 +92,7 @@ bool AppDelegate::initInstance() {
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
         CCEGLView * pMainWnd = new CCEGLView();
-		CC_BREAK_IF(! pMainWnd|| ! pMainWnd->Create(480, 320));
+        CC_BREAK_IF(! pMainWnd|| ! pMainWnd->Create(480, 320));
 #endif
 		bRet = true;
 	} while (0);

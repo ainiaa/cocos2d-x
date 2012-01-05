@@ -1,7 +1,7 @@
-HEADERS += \
-    ../effects/CCGrid.h \
-    ../effects/CCGrabber.h
-
 SOURCES += \
-    ../effects/CCGrid.cpp \
-    ../effects/CCGrabber.cpp
+    ../layers_scenes_transitions_nodes/CCTransitionRadial.cpp \
+    ../layers_scenes_transitions_nodes/CCTransitionPageTurn.cpp \
+    ../layers_scenes_transitions_nodes/CCTransition.cpp \
+    ../layers_scenes_transitions_nodes/CCScene.cpp \
+    ../layers_scenes_transitions_nodes/CCLayer.cpp
+

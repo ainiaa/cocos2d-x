@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= core gui opengl
+QT       += core gui opengl
 
 TARGET = libcocos2d
 TEMPLATE = lib
@@ -15,6 +15,7 @@ include(cocoa.pri)
 include(effects.pri)
 include(keypad_dispatcher.pri)
 include(label_nodes.pri)
+include(layers_scenes_transitions_nodes.pri)
 include(menu_nodes.pri)
 include(misc_nodes.pri)
 include(particle_nodes.pri)
@@ -29,9 +30,10 @@ include(touch_dispatcher.pri)
 
 win32 {
     # You may need to change this include directory
-#    DEFINES += WIN32
-#    DEFINES += _WINDOWS
-    INCLUDEPATH += ..\platform\third_party\win32\iconv \
+    DEFINES += WIN32
+    DEFINES += _WINDOWS
+    INCLUDEPATH += \
+            ..\platform\third_party\win32\iconv \
             ..\platform\third_party\win32\zlib \
             ..\platform\third_party\win32\libjpeg \
             ..\platform\third_party\win32\libpng \
@@ -39,6 +41,7 @@ win32 {
             ..\platform\third_party\win32\libxml2
 
     LIBS += -lglew32
+    LIBS += -lopengl32
     LIBS += -L..\platform\third_party\win32\libraries -llibxml2
     LIBS += -L..\platform\third_party\win32\libraries -llibpng
     LIBS += -L..\platform\third_party\win32\libraries -llibzlib
@@ -48,14 +51,21 @@ win32 {
 }
 
 DEFINES += _USRDLL
+DEFINES += __QT__
 DEFINES += CC_UNDER_QT
 INCLUDEPATH += ..\platform \
-#        ..\platform\third_party\win32\libjpeg \
-#        ..\platform\third_party\win32\pthread \
-#        ..\platform\third_party\win32\OGLES \
         ..\include \
         ..
 
+CONFIG(debug, debug|release) {
+    OBJECTS_DIR = debug/
+    DESTDIR = ../../debug.qt
+}
+
+CONFIG(release, debug|release) {
+    OBJECTS_DIR = release/
+    DESTDIR = ../../release.qt
+}
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN

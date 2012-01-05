@@ -25,15 +25,14 @@ THE SOFTWARE.
 #include "CCEGLView_qt.h"
 
 #include "CCGL.h"
-
 #include "CCSet.h"
 #include "ccMacros.h"
-#include "CCDirector.h"
 #include "CCTouch.h"
 #include "CCTouchDispatcher.h"
 #include "CCIMEDispatcher.h"
 
 NS_CC_BEGIN;
+
 static CCEGLView* s_pMainWindow = NULL;
 
 CCEGLView::CCEGLView()
@@ -48,21 +47,32 @@ CCEGLView::CCEGLView()
 	m_pTouch = new CCTouch;
 	m_pSet = new CCSet;
 	m_sSizeInPoint.width = m_sSizeInPoint.height = 0;
-//    SetRectEmpty(&m_rcViewPort);
 }
 
 CCEGLView::~CCEGLView()
 {
 }
 
-bool CCEGLView::Create(const char* pTitle, int iPixelWidth, int iPixelHeight, int iWidth, int iHeight, int iDepth) {
+bool CCEGLView::Create(int iWidth, int iHeight)
+{
+    GLWidget* m_window = new GLWidget();
+    m_window->resize(iWidth, iHeight);
+    m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
+    m_window->setFixedSize(iWidth, iHeight);
+    m_window->show();
+
+    bIsInit = true;
+    s_pMainWindow = this;
+
+    m_sSizeInPoint.width = iWidth;
+    m_sSizeInPoint.height = iHeight;
 
 	return true;
 }
 
 CCSize CCEGLView::getSize()
 {
-	return CCSize((float)(m_sSizeInPoint.width), (float)(m_sSizeInPoint.height));
+    return CCSize((float)(m_sSizeInPoint.width), (float)(m_sSizeInPoint.height));
 }
 
 bool CCEGLView::isOpenGLReady()
@@ -82,7 +92,7 @@ void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate) {
 void CCEGLView::swapBuffers() {
 	if (bIsInit) {
 		/* Swap buffers */
-        // glfwSwapBuffers();
+        // TODO
 	}
 }
 
@@ -116,27 +126,13 @@ void CCEGLView::setIMEKeyboardState(bool bOpen) {
 
 }
 
-//void CCEGLView::resize(int width, int height) {
-//	//TODO
-//	return;
-//}
-
-//void CCEGLView::centerWindow() {
-//	//TODO
-//	return;
-//}
-//void CCEGLView::setScreenScale(float factor) {
-//	m_fScreenScaleFactor = factor;
-//
-//}
-
 bool CCEGLView::canSetContentScaleFactor() {
 	return false;
 }
 
-void CCEGLView::setContentScaleFactor(float contentScaleFactor) {
+void CCEGLView::setContentScaleFactor(float contentScaleFactor)
+{
 	CCLog("could not set contentScaleFactor after initialized");
-
 }
 
 CCEGLView& CCEGLView::sharedOpenGLView()
