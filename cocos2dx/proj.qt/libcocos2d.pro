@@ -33,28 +33,28 @@ win32 {
     DEFINES += WIN32
     DEFINES += _WINDOWS
     INCLUDEPATH += \
-            ..\platform\third_party\win32\iconv \
-            ..\platform\third_party\win32\zlib \
-            ..\platform\third_party\win32\libjpeg \
-            ..\platform\third_party\win32\libpng \
-            ..\platform\third_party\win32\pthread \
-            ..\platform\third_party\win32\libxml2
+            ../platform/third_party/win32/iconv \
+            ../platform/third_party/win32/zlib \
+            ../platform/third_party/win32/libjpeg \
+            ../platform/third_party/win32/libpng \
+            ../platform/third_party/win32/pthread \
+            ../platform/third_party/win32/libxml2
 
     LIBS += -lglew32
     LIBS += -lopengl32
-    LIBS += -L..\platform\third_party\win32\libraries -llibxml2
-    LIBS += -L..\platform\third_party\win32\libraries -llibpng
-    LIBS += -L..\platform\third_party\win32\libraries -llibzlib
-    LIBS += -L..\platform\third_party\win32\libraries -llibjpeg
-    LIBS += -L..\platform\third_party\win32\libraries -llibiconv
-    LIBS += -L..\platform\third_party\win32\libraries -lpthreadVCE2
+    LIBS += -L../platform/third_party/win32/libraries -llibxml2
+    LIBS += -L../platform/third_party/win32/libraries -llibpng
+    LIBS += -L../platform/third_party/win32/libraries -llibzlib
+    LIBS += -L../platform/third_party/win32/libraries -llibjpeg
+    LIBS += -L../platform/third_party/win32/libraries -llibiconv
+    LIBS += -L../platform/third_party/win32/libraries -lpthreadVCE2
 }
 
 DEFINES += _USRDLL
 DEFINES += __QT__
 DEFINES += CC_UNDER_QT
-INCLUDEPATH += ..\platform \
-        ..\include \
+INCLUDEPATH += ../platform \
+        ../include \
         ..
 
 CONFIG(debug, debug|release) {
@@ -87,7 +87,7 @@ unix:!symbian {
 }
 
 HEADERS += \
-    ../CCConfiguration.h
+    ../CCConfiguration.h \
 
 SOURCES += \
     ../cocos2d.cpp \

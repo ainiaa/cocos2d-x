@@ -15,10 +15,10 @@ DEFINES += CC_UNDER_QT
 
 LIBS += -L$(DESTDIR) -llibcocos2d
 
-INCLUDEPATH += ..\..\cocos2dx\platform \
-        ..\..\cocos2dx\include \
-        ..\..\cocos2dx \
-        ..\..\HelloWorld\Classes
+INCLUDEPATH += ../../cocos2dx\platform \
+        ../../cocos2dx/include \
+        ../../cocos2dx \
+        ../../HelloWorld/Classes
 
 HEADERS += \
     ../Classes/HelloWorldScene.h \

@@ -25,46 +25,29 @@ THE SOFTWARE.
 #ifndef CCEGLVIEWQT_H_
 #define CCEGLVIEWQT_H_
 
+#include "CCGL.h"
 #include "CCCommon.h"
 #include "CCGeometry.h"
-#include "CCDirector.h"
-#include <QtCore/QTimer>
-#include <QGLWidget>
 
-class GLWidget : public QGLWidget
-{
-    Q_OBJECT
+class GLWidget;
 
-public:
-    GLWidget() : QGLWidget(QGLFormat(QGL::SampleBuffers))
-    {
-        QTimer *timer = new QTimer(this);
-        connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-        timer->start(1000 / 60);
-    }
-
-public slots:
-    void update()
-    {
-        cocos2d::CCDirector::sharedDirector()->mainLoop();
-    }
-};
-
-NS_CC_BEGIN;
+NS_CC_BEGIN
 
 class CCSet;
 class CCTouch;
 class EGLTouchDelegate;
 
-class CC_DLL CCEGLView {
+class CC_DLL CCEGLView
+{
 public:
 	CCEGLView();
 	virtual ~CCEGLView();
 
-	/**
-     * iWidth ,height: the window's size
-	 */
-    virtual bool Create(int iWidth, int iHeight);
+    // Create opengl window
+    bool Create(int iWidth, int iHeight);
+
+    // Set opengl window
+    void SetWindow(GLWidget* window);
 
 	CCSize getSize();
 	bool isOpenGLReady();
@@ -79,11 +62,6 @@ public:
 	void setScissorInPoints(float x, float y, float w, float h);
 
 	void setIMEKeyboardState(bool bOpen);
-
-	/**
-	 * the width and height is the real size of phone
-	 */
-	void setFrameWidthAndHeight(int width, int height);
 
 	/**
 	 @brief	get the shared main open gl window
@@ -108,8 +86,11 @@ private:
 	bool bIsInit;
 	int m_eInitOrientation;
 	float m_fScreenScaleFactor;
+
+    GLWidget* m_window;
+    bool m_bIsSubWindow;
 };
 
-NS_CC_END;
+NS_CC_END
 
 #endif /* CCEGLVIEWQT_H_ */

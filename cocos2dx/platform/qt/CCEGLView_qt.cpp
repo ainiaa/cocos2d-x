@@ -21,17 +21,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
 #include "CCEGLView_qt.h"
-
-#include "CCGL.h"
+#include "CCDirector.h"
 #include "CCSet.h"
 #include "ccMacros.h"
 #include "CCTouch.h"
 #include "CCTouchDispatcher.h"
 #include "CCIMEDispatcher.h"
+#include "CCGLWidget.h"
 
-NS_CC_BEGIN;
+NS_CC_BEGIN
 
 static CCEGLView* s_pMainWindow = NULL;
 
@@ -43,6 +42,8 @@ CCEGLView::CCEGLView()
 , bIsInit(false)
 , m_eInitOrientation(CCDeviceOrientationPortrait)
 , m_fScreenScaleFactor(1.0f)
+, m_window(NULL)
+, m_bIsSubWindow(false)
 {
 	m_pTouch = new CCTouch;
 	m_pSet = new CCSet;
@@ -55,11 +56,12 @@ CCEGLView::~CCEGLView()
 
 bool CCEGLView::Create(int iWidth, int iHeight)
 {
-    GLWidget* m_window = new GLWidget();
-    m_window->resize(iWidth, iHeight);
+    m_window = new GLWidget(iWidth,iHeight);
     m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
     m_window->setFixedSize(iWidth, iHeight);
     m_window->show();
+
+    m_bIsSubWindow = true;
 
     bIsInit = true;
     s_pMainWindow = this;
@@ -68,6 +70,18 @@ bool CCEGLView::Create(int iWidth, int iHeight)
     m_sSizeInPoint.height = iHeight;
 
 	return true;
+}
+
+void CCEGLView::SetWindow(GLWidget* window)
+{
+    CC_SAFE_DELETE(m_window);
+    m_window = window;
+
+    bIsInit = true;
+    s_pMainWindow = this;
+
+    m_sSizeInPoint.width = m_window->width();
+    m_sSizeInPoint.height = m_window->height();
 }
 
 CCSize CCEGLView::getSize()
@@ -82,6 +96,15 @@ bool CCEGLView::isOpenGLReady()
 
 void CCEGLView::release()
 {
+    CC_SAFE_DELETE(m_pSet);
+    CC_SAFE_DELETE(m_pTouch);
+    CC_SAFE_DELETE(m_pDelegate);
+
+    // delete the opengl window only when it is created by CCEGLView::Create()
+    if (! m_bIsSubWindow)
+        CC_SAFE_DELETE(m_window);
+
+    delete this;
 }
 
 void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate) {
@@ -141,4 +164,4 @@ CCEGLView& CCEGLView::sharedOpenGLView()
 	return *s_pMainWindow;
 }
 
-NS_CC_END;
+NS_CC_END
