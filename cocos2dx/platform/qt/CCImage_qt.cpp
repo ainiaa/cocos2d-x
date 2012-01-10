@@ -21,12 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-#include <string.h>
-
-#include <vector>
-#include <string>
-#include <sstream>
+//#include <QPainter>
 
 #include "CCFileUtils.h"
 
@@ -34,18 +29,9 @@ THE SOFTWARE.
 #include "CCImage.h"
 #include "CCStdC.h"
 
-#define szFont_kenning 2
-
-#define SHIFT6(num) (num>>6)
-
 using namespace std;
 
-struct TextLine {
-	string sLineStr;
-	int iLineWidth;
-};
-
-NS_CC_BEGIN;
+NS_CC_BEGIN
 
 bool CCImage::initWithString(
 		const char * pText,
@@ -55,10 +41,10 @@ bool CCImage::initWithString(
 		const char * pFontName/* = nil*/,
 		int nSize/* = 0*/)
 {
-	bool bRet = false;
+//    QPainter painter;
+//    painter.drawText(0, 0, pText);
 
-	//do nothing
-	return bRet;
+    return true;
 }
 
-NS_CC_END;
+NS_CC_END

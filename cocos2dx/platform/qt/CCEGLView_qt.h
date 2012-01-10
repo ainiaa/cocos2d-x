@@ -47,7 +47,7 @@ public:
     bool Create(int iWidth, int iHeight);
 
     // Set opengl window
-    void SetWindow(GLWidget* window);
+    bool SetWindow(GLWidget* window);
 
 	CCSize getSize();
 	bool isOpenGLReady();

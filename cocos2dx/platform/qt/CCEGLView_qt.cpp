@@ -72,8 +72,11 @@ bool CCEGLView::Create(int iWidth, int iHeight)
 	return true;
 }
 
-void CCEGLView::SetWindow(GLWidget* window)
+bool CCEGLView::SetWindow(GLWidget* window)
 {
+    if (NULL == window)
+        return false;
+
     CC_SAFE_DELETE(m_window);
     m_window = window;
 
@@ -82,6 +85,8 @@ void CCEGLView::SetWindow(GLWidget* window)
 
     m_sSizeInPoint.width = m_window->width();
     m_sSizeInPoint.height = m_window->height();
+
+    return true;
 }
 
 CCSize CCEGLView::getSize()
