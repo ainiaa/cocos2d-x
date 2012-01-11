@@ -21,8 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-//#include <QPainter>
-
 #include "CCFileUtils.h"
 
 #include "CCPlatformMacros.h"
@@ -41,10 +39,7 @@ bool CCImage::initWithString(
 		const char * pFontName/* = nil*/,
 		int nSize/* = 0*/)
 {
-//    QPainter painter;
-//    painter.drawText(0, 0, pText);
-
-    return true;
+    return false;
 }
 
 NS_CC_END
