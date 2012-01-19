@@ -120,7 +120,7 @@ void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate) {
 void CCEGLView::swapBuffers() {
 	if (bIsInit) {
 		/* Swap buffers */
-        // TODO
+        m_window->swapBuffers();
 	}
 }
 
