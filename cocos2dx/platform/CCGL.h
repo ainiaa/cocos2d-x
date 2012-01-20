@@ -55,7 +55,8 @@ THE SOFTWARE.
 #define ccglglPointSizePointer      glPointSizePointerOES
 #endif
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX) || defined(CC_BADA_2_0)
+
 #define ccglGenerateMipmap			CCEGLView::glGenerateMipmapOES
 #define ccglGenFramebuffers			CCEGLView::glGenFramebuffersOES
 #define ccglBindFramebuffer			CCEGLView::glBindFramebufferOES
