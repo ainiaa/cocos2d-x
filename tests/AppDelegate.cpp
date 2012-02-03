@@ -7,9 +7,14 @@
 USING_NS_CC;
 using namespace CocosDenshion;
 
-AppDelegate::AppDelegate()
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+AppDelegate::AppDelegate(int argc, char *argv[]) : CCApplication(argc, argv)
 {
 }
+#else
+AppDelegate::AppDelegate() {
+}
+#endif
 
 AppDelegate::~AppDelegate()
 {
@@ -89,6 +94,11 @@ bool AppDelegate::initInstance()
 		CC_BREAK_IF(! pMainWnd|| ! pMainWnd->Create(480, 320));
 		CCFileUtils::setResourcePath("app/native/Resource");
 #endif // CC_PLATFORM_QNX
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+        CCEGLView * pMainWnd = new CCEGLView();
+        CC_BREAK_IF(! pMainWnd|| ! pMainWnd->Create(480, 320));
+#endif
 
         bRet = true;
     } while (0);

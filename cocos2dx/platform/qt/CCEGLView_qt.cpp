@@ -34,6 +34,21 @@ NS_CC_BEGIN
 
 static CCEGLView* s_pMainWindow = NULL;
 
+static void mouseMove(QMouseEvent *event)
+{
+    s_pMainWindow->mouseMove(event);
+}
+
+static void mousePress(QMouseEvent *event)
+{
+    s_pMainWindow->mousePress(event);
+}
+
+static void mouseRelease(QMouseEvent *event)
+{
+    s_pMainWindow->mouseRelease(event);
+}
+
 CCEGLView::CCEGLView()
 : m_bCaptured(false)
 , m_bOrientationReverted(false)
@@ -57,6 +72,11 @@ CCEGLView::~CCEGLView()
 bool CCEGLView::Create(int iWidth, int iHeight)
 {
     m_window = new GLWidget(iWidth,iHeight);
+
+    m_window->setMouseMoveFunc(&cocos2d::mouseMove);
+    m_window->setMousePressFunc(&cocos2d::mousePress);
+    m_window->setMouseReleaseFunc(&cocos2d::mouseRelease);
+
     m_window->setWindowFlags(m_window->windowFlags()& ~Qt::WindowMaximizeButtonHint);
     m_window->setFixedSize(iWidth, iHeight);
     m_window->show();
@@ -68,6 +88,8 @@ bool CCEGLView::Create(int iWidth, int iHeight)
 
     m_sSizeInPoint.width = iWidth;
     m_sSizeInPoint.height = iHeight;
+    m_bOrientationInitVertical = (CCDeviceOrientationPortrait == m_eInitOrientation
+                || kCCDeviceOrientationPortraitUpsideDown == m_eInitOrientation) ? true : false;
 
 	return true;
 }
@@ -125,8 +147,22 @@ void CCEGLView::swapBuffers() {
 }
 
 int CCEGLView::setDeviceOrientation(int eOritation) {
-	CCLog("warning:could not setDeviceOrientation after initialized");
-    return -1;
+    do
+    {
+        bool bVertical = (CCDeviceOrientationPortrait == eOritation ||
+                          kCCDeviceOrientationPortraitUpsideDown == eOritation) ? true : false;
+
+        CC_BREAK_IF(m_bOrientationReverted && bVertical != m_bOrientationInitVertical);
+        CC_BREAK_IF(! m_bOrientationReverted && bVertical == m_bOrientationInitVertical);
+
+        m_bOrientationReverted = (bVertical == m_bOrientationInitVertical) ? false : true;
+
+        // swap width and height
+        QSize size = m_window->size();
+        m_window->resize(size.height(), size.width());
+    } while (0);
+
+    return m_eInitOrientation;
 }
 
 void CCEGLView::setViewPortInPoints(float x, float y, float w, float h) {
@@ -167,6 +203,51 @@ CCEGLView& CCEGLView::sharedOpenGLView()
 {
 	CC_ASSERT(s_pMainWindow);
 	return *s_pMainWindow;
+}
+
+void CCEGLView::mouseMove(QMouseEvent *event)
+{
+    if (! m_pDelegate || ! m_pTouch)
+        return;
+
+    if (! m_bCaptured)
+        return;
+
+    m_pTouch->SetTouchInfo(0, (float)(event->x()) / m_fScreenScaleFactor,
+        (float)(event->y()) / m_fScreenScaleFactor);
+    m_pDelegate->touchesMoved(m_pSet, NULL);
+}
+
+void CCEGLView::mousePress(QMouseEvent *event)
+{
+    if (! m_pDelegate || ! m_pTouch)
+        return;
+
+    if (event->button() != Qt::LeftButton)
+        return;
+
+    m_bCaptured = true;
+
+    m_pTouch->SetTouchInfo(0, (float)(event->x()) / m_fScreenScaleFactor,
+        (float)(event->y()) / m_fScreenScaleFactor);
+    m_pSet->addObject(m_pTouch);
+    m_pDelegate->touchesBegan(m_pSet, NULL);
+}
+
+void CCEGLView::mouseRelease(QMouseEvent *event)
+{
+    if (! m_pDelegate || ! m_pTouch)
+        return;
+
+    if (event->button() != Qt::LeftButton)
+        return;
+
+    m_bCaptured = false;
+
+    m_pTouch->SetTouchInfo(0, (float)(event->x()) / m_fScreenScaleFactor,
+        (float)(event->y()) / m_fScreenScaleFactor);
+    m_pDelegate->touchesEnded(m_pSet, NULL);
+    m_pSet->removeObject(m_pTouch);
 }
 
 NS_CC_END

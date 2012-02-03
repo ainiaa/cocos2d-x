@@ -29,6 +29,8 @@ THE SOFTWARE.
 #include "CCCommon.h"
 #include "CCGeometry.h"
 
+#include <QMouseEvent>
+
 class GLWidget;
 
 NS_CC_BEGIN
@@ -63,6 +65,10 @@ public:
 
 	void setIMEKeyboardState(bool bOpen);
 
+    void mouseMove(QMouseEvent *event);
+    void mousePress(QMouseEvent *event);
+    void mouseRelease(QMouseEvent *event);
+
 	/**
 	 @brief	get the shared main open gl window
 	 */
@@ -73,12 +79,12 @@ private:
 	bool m_bOrientationReverted;
 	bool m_bOrientationInitVertical;
 	CCSet * m_pSet;
-	CCTouch * m_pTouch;
+    CCTouch * m_pTouch;
 
 	//store current mouse point for moving, valid if and only if the mouse pressed
 	CCPoint m_mousePoint;
 
-	EGLTouchDelegate * m_pDelegate;
+    EGLTouchDelegate * m_pDelegate;
 
 	CCSize m_sSizeInPoint;
 	CCRect m_rcViewPort;

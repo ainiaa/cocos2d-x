@@ -11,7 +11,12 @@ The reason for implement as private inheritance is to hide some interface call b
 class  AppDelegate : private cocos2d::CCApplication
 {
 public:
-	AppDelegate();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+    AppDelegate(int argc, char *argv[]);
+#else
+    AppDelegate();
+#endif
+
 	virtual ~AppDelegate();
 
     /**

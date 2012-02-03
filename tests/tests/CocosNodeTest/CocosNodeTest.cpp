@@ -256,28 +256,28 @@ std::string Test4::title()
 //------------------------------------------------------------------
 Test5::Test5()
 {
-	CCSprite* sp1 = CCSprite::spriteWithFile(s_pPathSister1);
-	CCSprite* sp2 = CCSprite::spriteWithFile(s_pPathSister2);
+//	CCSprite* sp1 = CCSprite::spriteWithFile(s_pPathSister1);
+//	CCSprite* sp2 = CCSprite::spriteWithFile(s_pPathSister2);
 	
-	sp1->setPosition(CCPointMake(100,160));
-	sp2->setPosition(CCPointMake(380,160));
+//	sp1->setPosition(CCPointMake(100,160));
+//	sp2->setPosition(CCPointMake(380,160));
 
-	CCRotateBy* rot = CCRotateBy::actionWithDuration(2, 360);
-	CCActionInterval* rot_back = rot->reverse();
-	CCAction* forever = CCRepeatForever::actionWithAction(
-													(CCActionInterval*)(CCSequence::actions(rot, rot_back, NULL)) 
-												);
-	CCAction* forever2 = (CCAction*)(forever->copy()->autorelease());
-	forever->setTag(101);
-	forever2->setTag(102);
+//	CCRotateBy* rot = CCRotateBy::actionWithDuration(2, 360);
+//	CCActionInterval* rot_back = rot->reverse();
+//	CCAction* forever = CCRepeatForever::actionWithAction(
+//													(CCActionInterval*)(CCSequence::actions(rot, rot_back, NULL))
+//												);
+//	CCAction* forever2 = (CCAction*)(forever->copy()->autorelease());
+//	forever->setTag(101);
+//	forever2->setTag(102);
 												  
-	addChild(sp1, 0, kTagSprite1);
-	addChild(sp2, 0, kTagSprite2);
+//	addChild(sp1, 0, kTagSprite1);
+//	addChild(sp2, 0, kTagSprite2);
 			
-	sp1->runAction(forever);
-	sp2->runAction(forever2);
+//	sp1->runAction(forever);
+//	sp2->runAction(forever2);
 	
-	schedule( schedule_selector(Test5::addAndRemove), 2.0f);
+//	schedule( schedule_selector(Test5::addAndRemove), 2.0f);
 }
 
 void Test5::addAndRemove(ccTime dt)

@@ -99,7 +99,7 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new ZwoptexTestScene(); break;
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 // bada don't support libcurl
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA && CC_TARGET_PLATFORM != CC_PLATFORM_QT)
 	case TEST_CURL:
 		pScene = new CurlTestScene(); break;
 #endif
@@ -182,6 +182,10 @@ void TestController::menuCallback(CCObject * pSender)
 void TestController::closeCallback(CCObject * pSender)
 {
     CCDirector::sharedDirector()->end();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_QT)
+	exit(0);
+#endif
 }
 
 void TestController::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
