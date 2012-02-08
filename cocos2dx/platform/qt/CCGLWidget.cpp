@@ -33,18 +33,24 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     if (mouseMoveFunc)
         mouseMoveFunc(event);
+
+    QWidget::mouseMoveEvent(event);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent *event)
 {
     if (mousePressFunc)
         mousePressFunc(event);
+
+    QWidget::mousePressEvent(event);
 }
 
 void GLWidget::mouseReleaseEvent(QMouseEvent *event)
 {
     if (mouseReleaseFunc)
         mouseReleaseFunc(event);
+
+    QWidget::mouseReleaseEvent(event);
 }
 
 void GLWidget::update()
