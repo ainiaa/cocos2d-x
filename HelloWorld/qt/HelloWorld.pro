@@ -4,11 +4,11 @@ TARGET = HelloWorld
 TEMPLATE = app
 
 CONFIG(debug, debug|release) {
-    DESTDIR = ../../debug.qt
+    DESTDIR = ../../Debug.qt
 }
 
 CONFIG(release, debug|release) {
-    DESTDIR = ../../release.qt
+    DESTDIR = ../../Release.qt
 }
 
 DEFINES += CC_UNDER_QT

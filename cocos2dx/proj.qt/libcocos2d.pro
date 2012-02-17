@@ -59,12 +59,12 @@ INCLUDEPATH += ../platform \
 
 CONFIG(debug, debug|release) {
     OBJECTS_DIR = debug/
-    DESTDIR = ../../debug.qt
+    DESTDIR = ../../Debug.qt
 }
 
 CONFIG(release, debug|release) {
     OBJECTS_DIR = release/
-    DESTDIR = ../../release.qt
+    DESTDIR = ../../Release.qt
 }
 
 symbian {
