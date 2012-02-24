@@ -72,23 +72,19 @@ CCNode* XBReader::nodeFromDictionary(XBDictionary *dictionary)
     {
         const char* plistFile = valueForKey("plistFile", props);
 
+        node = new CCParticleSystemQuad;
+        CCParticleSystem* particleSystem = dynamic_cast<CCParticleSystem*>(node);
+
         if (strcmp(plistFile, "") == 0)
         {
             // particleSystem only be edited by the other third party tool NOW
             return NULL;
-            node = new CCParticleSystemQuad;
-
-            CCParticleSystem* particleSystem = dynamic_cast<CCParticleSystem*>(node);
-
             setPropForCCNode(node, props);
             setPropForCCParticleSystem(particleSystem, props);
         } else
         {
             // maybe the particlesystem is designed in the other third party tool
             // it will generate a .plist file
-            CCParticleSystem* particleSystem = new CCParticleSystemQuad;
-
-            node = particleSystem;
             setPropForCCNode(node, props);
 
             particleSystem->initWithFile(plistFile);
@@ -99,26 +95,23 @@ CCNode* XBReader::nodeFromDictionary(XBDictionary *dictionary)
         }
     } else if (strcmp(className, "CCMenu") == 0)
     {
-        CCMenu* menu = new CCMenu;
-        node = menu;
+        node = new CCMenu;
+        CCMenu* menu = dynamic_cast<CCMenu*>(node);
         setPropForMenu(menu, props);
-        setPropForCCNode(node, props);
+        setPropForCCNode(menu, props);
     } else if (strcmp(className, "CCMenuItemImage") == 0)
     {
-        CCMenuItemImage* itemImage = new CCMenuItemImage;
+        node = new CCMenuItemImage;
 
-        node = itemImage;
+        CCMenuItemImage* itemImage = dynamic_cast<CCMenuItemImage*>(node);
         setPropForItemImage(itemImage, props);
+        setPropForMenuItem(itemImage, props);
     } else if (strcmp(className, "CCLabelBMFont") == 0)
     {
-        CCLabelBMFont* bmFont = new CCLabelBMFont;
-        node = bmFont;
+        node = new CCLabelBMFont;
+        CCLabelBMFont* bmFont = dynamic_cast<CCLabelBMFont*>(node);
         setPropForBMFont(bmFont, props);
         setPropForCCNode(node, props);
-        ccBlendFunc func;
-        func.src = CC_BLEND_SRC;
-        func.dst = CC_BLEND_DST;
-        bmFont->setBlendFunc(func);
     } else
     {
         // unknown class
@@ -128,12 +121,11 @@ CCNode* XBReader::nodeFromDictionary(XBDictionary *dictionary)
     if (! node)
         return NULL;
 
+    node->autorelease();
+
 #ifdef XBRICK
     Helper::getSingleton().setNodeName(node, nodeName);
 #endif
-
-    // this node is an autorelease object
-    node->autorelease();
 
     // Add children
     for (unsigned int i = 0; i < children->count(); i++)
@@ -293,6 +285,11 @@ void XBReader::setPropForMenu(CCMenu* menu, XBDictionary* props)
     menu->initWithItems(NULL, NULL);
 }
 
+void XBReader::setPropForMenuItem(CCMenuItem* menuItem, XBDictionary* props)
+{
+    menuItem->setIsEnabled(boolFromDict("Enabled", props));
+}
+
 void XBReader::setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* props)
 {
     const char* normalImage = valueForKey("spriteFileNormal", props);
@@ -300,7 +297,7 @@ void XBReader::setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* pro
     const char* selectedImage = valueForKey("spriteFileSelected", props);
 
 #ifdef XBRICK
-    Helper::getSingleton().setItemImageFiles(itemImage, normalImage, disabledImage, selectedImage);
+    Helper::getSingleton().setItemImageFiles(itemImage, normalImage, selectedImage, disabledImage);
 #endif
 
     // Please change last two parameters to yours

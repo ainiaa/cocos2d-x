@@ -2,13 +2,13 @@
 #define XBREADER_H
 
 #include "cocos2d.h"
-
 USING_NS_CC;
+
+typedef CCMutableArray<CCObject*> XBArray;
+typedef CCDictionary<std::string, CCObject*> XBDictionary;
 
 class XBReader
 {
-    typedef CCMutableArray<CCObject*> XBArray;
-    typedef CCDictionary<std::string, CCObject*> XBDictionary;
 public:
     CCNode* nodeFromFile(const char *pFile);
     CCNode* nodeFromDictionary(XBDictionary *dictionary);
@@ -150,6 +150,7 @@ public:
     void setPropForCCParticleSystem(CCParticleSystem* particleSystem, XBDictionary* props);
     void setPropForBMFont(CCLabelBMFont* bmFont, XBDictionary* props);
     void setPropForMenu(CCMenu* menu, XBDictionary* props);
+    void setPropForMenuItem(CCMenuItem* menuItem, XBDictionary* props);
     void setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* props);
 };
 
