@@ -1,5 +1,4 @@
 SOURCES += ../actions/CCAction.cpp \
-        ../actions/CCAction.cpp \
         ../actions/CCActionCamera.cpp \
         ../actions/CCActionEase.cpp \
         ../actions/CCActionGrid.cpp \

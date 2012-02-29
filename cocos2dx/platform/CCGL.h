@@ -191,7 +191,7 @@ extern PFNGLDELETEBUFFERSARBPROC 			glDeleteBuffersARB;
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
 #include <GL/glew.h>
-#include <GL/wglew.h>
+#include <GL/glxew.h>
 #endif
 
 #ifndef M_PI

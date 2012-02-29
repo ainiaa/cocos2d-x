@@ -3,6 +3,14 @@ QT       += core gui
 TARGET = HelloWorld
 TEMPLATE = app
 
+win32 {
+    LIBS += -L$(DESTDIR) -llibcocos2d
+}
+
+unix {
+    LIBS += -L$(DESTDIR) -lcocos2d
+}
+
 CONFIG(debug, debug|release) {
     DESTDIR = ../../Debug.qt
 }
@@ -13,9 +21,7 @@ CONFIG(release, debug|release) {
 
 DEFINES += CC_UNDER_QT
 
-LIBS += -L$(DESTDIR) -llibcocos2d
-
-INCLUDEPATH += ../../cocos2dx\platform \
+INCLUDEPATH += ../../cocos2dx/platform \
         ../../cocos2dx/include \
         ../../cocos2dx \
         ../../HelloWorld/Classes

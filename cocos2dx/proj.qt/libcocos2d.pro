@@ -6,7 +6,6 @@
 
 QT       += core gui opengl
 
-TARGET = libcocos2d
 TEMPLATE = lib
 
 include(actions.pri)
@@ -30,6 +29,8 @@ include(tileMap_parallax_nodes.pri)
 include(touch_dispatcher.pri)
 
 win32 {
+    TARGET = libcocos2d
+
     # You may need to change this include directory
     DEFINES += WIN32
     DEFINES += _WINDOWS
@@ -51,6 +52,22 @@ win32 {
     LIBS += -L../platform/third_party/win32/libraries -lpthreadVCE2
 }
 
+unix {
+    TARGET = cocos2d
+
+    INCLUDEPATH += /usr/local/include \
+            /usr/include/libxml2 \
+            ../../cocos2dx
+
+    # LIBS += -lglew32
+    LIBS += -L/usr/local/lib/ -lpng
+    LIBS += -L/usr/local/lib/ -ljpeg
+    LIBS += -L/usr/local/lib/ -lxml2
+    LIBS += -L/usr/local/lib/ -lz
+    LIBS += -L/usr/lib/ -lcurl
+    LIBS += -L/usr/lib/ -lGLEW
+}
+
 DEFINES += _USRDLL
 DEFINES += __QT__
 DEFINES += CC_UNDER_QT
@@ -66,16 +83,6 @@ CONFIG(debug, debug|release) {
 CONFIG(release, debug|release) {
     OBJECTS_DIR = release/
     DESTDIR = ../../Release.qt
-}
-
-symbian {
-    MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE851FF78
-    TARGET.CAPABILITY = 
-    TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = libcocos2d.dll
-    addFiles.path = !:/sys/bin
-    DEPLOYMENT += addFiles
 }
 
 unix:!symbian {

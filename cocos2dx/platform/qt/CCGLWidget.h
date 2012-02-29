@@ -2,6 +2,7 @@
 #define  _GL_WIDGET_H_
 
 #include "CCCommon.h"
+#undef CursorShape
 #include <QtOpenGL/QGLWidget>
 
 class CC_DLL GLWidget : public QGLWidget

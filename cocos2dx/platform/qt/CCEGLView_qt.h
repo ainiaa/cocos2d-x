@@ -25,11 +25,11 @@ THE SOFTWARE.
 #ifndef CCEGLVIEWQT_H_
 #define CCEGLVIEWQT_H_
 
+#include <QMouseEvent>
+
 #include "CCGL.h"
 #include "CCCommon.h"
 #include "CCGeometry.h"
-
-#include <QMouseEvent>
 
 class GLWidget;
 

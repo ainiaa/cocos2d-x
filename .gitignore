@@ -32,6 +32,7 @@ _ReSharper*/
 
 # Ignore files build by Qt Creator
 *.pro.user
+moc_*
 Makefile
 Makefile.Debug
 Makefile.Release

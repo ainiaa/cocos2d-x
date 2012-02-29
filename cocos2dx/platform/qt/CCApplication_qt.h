@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define CCAPLICATION_QT_H_
 
 #include "CCCommon.h"
+#undef CursorShape
 #include <QtGui/QApplication>
 
 NS_CC_BEGIN;
