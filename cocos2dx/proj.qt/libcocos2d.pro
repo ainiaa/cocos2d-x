@@ -59,13 +59,12 @@ unix {
             /usr/include/libxml2 \
             ../../cocos2dx
 
-    # LIBS += -lglew32
     LIBS += -L/usr/local/lib/ -lpng
     LIBS += -L/usr/local/lib/ -ljpeg
     LIBS += -L/usr/local/lib/ -lxml2
+    LIBS += -L/usr/local/lib/ -lGLEW
     LIBS += -L/usr/local/lib/ -lz
-    LIBS += -L/usr/lib/ -lcurl
-    LIBS += -L/usr/lib/ -lGLEW
+    LIBS += -L/usr/local/lib/ -lcurl
 }
 
 DEFINES += _USRDLL
