@@ -16,13 +16,13 @@
    <dict>
     <key>anchorPoint</key>
     <array>
-     <real>0</real>
-     <real>0</real>
+     <real>0.5</real>
+     <real>0.5</real>
     </array>
     <key>contentSize</key>
     <array>
-     <real>480</real>
-     <real>320</real>
+     <real>15</real>
+     <real>15</real>
     </array>
     <key>isRelativeAnchorPoint</key>
     <false/>
@@ -44,7 +44,7 @@
     <key>tag</key>
     <integer>-1</integer>
     <key>touchEnabled</key>
-    <true/>
+    <false/>
     <key>accelerometerEnabled</key>
     <false/>
     <key>keypadEnabled</key>
@@ -61,8 +61,8 @@
      <dict>
       <key>anchorPoint</key>
       <array>
-       <real>0</real>
-       <real>0</real>
+       <real>0.5</real>
+       <real>0.5</real>
       </array>
       <key>contentSize</key>
       <array>
@@ -112,7 +112,7 @@
     </dict>
     <dict>
      <key>class</key>
-     <string>CCLabelBMFont</string>
+     <string>CCMenu</string>
      <key>name</key>
      <string></string>
      <key>properties</key>
@@ -124,15 +124,15 @@
       </array>
       <key>contentSize</key>
       <array>
-       <real>232</real>
-       <real>37</real>
+       <real>15</real>
+       <real>15</real>
       </array>
       <key>isRelativeAnchorPoint</key>
-      <true/>
+      <false/>
       <key>position</key>
       <array>
-       <real>247</real>
-       <real>288</real>
+       <real>46</real>
+       <real>33</real>
       </array>
       <key>rotation</key>
       <real>0</real>
@@ -146,79 +146,34 @@
       <integer>0</integer>
       <key>tag</key>
       <integer>-1</integer>
-      <key>color</key>
-      <array>
-       <integer>255</integer>
-       <integer>255</integer>
-       <integer>255</integer>
-       <integer>255</integer>
-      </array>
-      <key>fontFile</key>
-      <string>fonts/bitmapFontTest4.fnt</string>
-      <key>string</key>
-      <string>Created by XBrick</string>
-     </dict>
-     <key>children</key>
-     <array/>
-    </dict>
-    <dict>
-     <key>class</key>
-     <string>CCNode</string>
-     <key>name</key>
-     <string></string>
-     <key>properties</key>
-     <dict>
-      <key>anchorPoint</key>
-      <array>
-       <real>0</real>
-       <real>0</real>
-      </array>
-      <key>contentSize</key>
-      <array>
-       <real>0</real>
-       <real>0</real>
-      </array>
-      <key>isRelativeAnchorPoint</key>
+      <key>touchEnabled</key>
       <true/>
-      <key>position</key>
-      <array>
-       <real>400</real>
-       <real>80</real>
-      </array>
-      <key>rotation</key>
-      <real>0</real>
-      <key>visible</key>
-      <true/>
-      <key>scaleX</key>
-      <real>1</real>
-      <key>scaleY</key>
-      <real>1</real>
-      <key>zOrder</key>
-      <integer>0</integer>
-      <key>tag</key>
-      <integer>-1</integer>
+      <key>accelerometerEnabled</key>
+      <false/>
+      <key>keypadEnabled</key>
+      <false/>
      </dict>
      <key>children</key>
      <array>
       <dict>
        <key>class</key>
-       <string>CCMenu</string>
+       <string>CCMenuItemImage</string>
        <key>name</key>
        <string></string>
        <key>properties</key>
        <dict>
         <key>anchorPoint</key>
         <array>
-         <real>0</real>
-         <real>0</real>
+         <real>0.5</real>
+         <real>0.5</real>
         </array>
         <key>contentSize</key>
         <array>
-         <real>0</real>
-         <real>0</real>
+         <real>79</real>
+         <real>46</real>
         </array>
         <key>isRelativeAnchorPoint</key>
-        <false/>
+        <true/>
         <key>position</key>
         <array>
          <real>0</real>
@@ -236,64 +191,17 @@
         <integer>0</integer>
         <key>tag</key>
         <integer>-1</integer>
-        <key>touchEnabled</key>
+        <key>Enabled</key>
         <true/>
-        <key>accelerometerEnabled</key>
-        <false/>
-        <key>keypadEnabled</key>
-        <false/>
+        <key>spriteFileNormal</key>
+        <string>Images/b1.png</string>
+        <key>spriteFileDisabled</key>
+        <string>Images/b2.png</string>
+        <key>spriteFileSelected</key>
+        <string>Images/b1.png</string>
        </dict>
        <key>children</key>
-       <array>
-        <dict>
-         <key>class</key>
-         <string>CCMenuItemImage</string>
-         <key>name</key>
-         <string></string>
-         <key>properties</key>
-         <dict>
-          <key>anchorPoint</key>
-          <array>
-           <real>0.5</real>
-           <real>0.5</real>
-          </array>
-          <key>contentSize</key>
-          <array>
-           <real>79</real>
-           <real>46</real>
-          </array>
-          <key>isRelativeAnchorPoint</key>
-          <true/>
-          <key>position</key>
-          <array>
-           <real>0</real>
-           <real>0</real>
-          </array>
-          <key>rotation</key>
-          <real>0</real>
-          <key>visible</key>
-          <true/>
-          <key>scaleX</key>
-          <real>1</real>
-          <key>scaleY</key>
-          <real>1</real>
-          <key>zOrder</key>
-          <integer>0</integer>
-          <key>tag</key>
-          <integer>-1</integer>
-          <key>Enabled</key>
-          <true/>
-          <key>spriteFileNormal</key>
-          <string>Images/b1.png</string>
-          <key>spriteFileDisabled</key>
-          <string>Images/b2.png</string>
-          <key>spriteFileSelected</key>
-          <string>Images/b2.png</string>
-         </dict>
-         <key>children</key>
-         <array/>
-        </dict>
-       </array>
+       <array/>
       </dict>
       <dict>
        <key>class</key>
@@ -309,24 +217,24 @@
         </array>
         <key>contentSize</key>
         <array>
-         <real>70</real>
-         <real>37</real>
+         <real>46</real>
+         <real>26</real>
         </array>
         <key>isRelativeAnchorPoint</key>
         <true/>
         <key>position</key>
         <array>
-         <real>5</real>
-         <real>-1</real>
+         <real>0</real>
+         <real>0</real>
         </array>
         <key>rotation</key>
-        <real>0</real>
+        <real>10.5</real>
         <key>visible</key>
         <true/>
         <key>scaleX</key>
-        <real>0.83</real>
+        <real>1.11766</real>
         <key>scaleY</key>
-        <real>0.83</real>
+        <real>1</real>
         <key>zOrder</key>
         <integer>0</integer>
         <key>tag</key>
@@ -339,9 +247,155 @@
          <integer>255</integer>
         </array>
         <key>fontFile</key>
-        <string>fonts/bitmapFontTest4.fnt</string>
+        <string>fonts/markerfelt24shadow.fnt</string>
         <key>string</key>
-        <string>Press</string>
+        <string>Back</string>
+       </dict>
+       <key>children</key>
+       <array/>
+      </dict>
+     </array>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCMenu</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>15</real>
+       <real>15</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <false/>
+      <key>position</key>
+      <array>
+       <real>414</real>
+       <real>28</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>touchEnabled</key>
+      <true/>
+      <key>accelerometerEnabled</key>
+      <false/>
+      <key>keypadEnabled</key>
+      <false/>
+     </dict>
+     <key>children</key>
+     <array>
+      <dict>
+       <key>class</key>
+       <string>CCMenuItemImage</string>
+       <key>name</key>
+       <string></string>
+       <key>properties</key>
+       <dict>
+        <key>anchorPoint</key>
+        <array>
+         <real>0.5</real>
+         <real>0.5</real>
+        </array>
+        <key>contentSize</key>
+        <array>
+         <real>79</real>
+         <real>46</real>
+        </array>
+        <key>isRelativeAnchorPoint</key>
+        <true/>
+        <key>position</key>
+        <array>
+         <real>0</real>
+         <real>0</real>
+        </array>
+        <key>rotation</key>
+        <real>0</real>
+        <key>visible</key>
+        <true/>
+        <key>scaleX</key>
+        <real>1</real>
+        <key>scaleY</key>
+        <real>1</real>
+        <key>zOrder</key>
+        <integer>0</integer>
+        <key>tag</key>
+        <integer>-1</integer>
+        <key>Enabled</key>
+        <true/>
+        <key>spriteFileNormal</key>
+        <string>Images/f1.png</string>
+        <key>spriteFileDisabled</key>
+        <string>Images/f2.png</string>
+        <key>spriteFileSelected</key>
+        <string>Images/f2.png</string>
+       </dict>
+       <key>children</key>
+       <array/>
+      </dict>
+      <dict>
+       <key>class</key>
+       <string>CCLabelBMFont</string>
+       <key>name</key>
+       <string></string>
+       <key>properties</key>
+       <dict>
+        <key>anchorPoint</key>
+        <array>
+         <real>0.5</real>
+         <real>0.5</real>
+        </array>
+        <key>contentSize</key>
+        <array>
+         <real>80</real>
+         <real>26</real>
+        </array>
+        <key>isRelativeAnchorPoint</key>
+        <true/>
+        <key>position</key>
+        <array>
+         <real>0</real>
+         <real>0</real>
+        </array>
+        <key>rotation</key>
+        <real>-16.5</real>
+        <key>visible</key>
+        <true/>
+        <key>scaleX</key>
+        <real>0.999757</real>
+        <key>scaleY</key>
+        <real>1</real>
+        <key>zOrder</key>
+        <integer>0</integer>
+        <key>tag</key>
+        <integer>-1</integer>
+        <key>color</key>
+        <array>
+         <integer>255</integer>
+         <integer>255</integer>
+         <integer>255</integer>
+         <integer>255</integer>
+        </array>
+        <key>fontFile</key>
+        <string>fonts/markerfelt24shadow.fnt</string>
+        <key>string</key>
+        <string>Forward</string>
        </dict>
        <key>children</key>
        <array/>
@@ -362,15 +416,15 @@
       </array>
       <key>contentSize</key>
       <array>
-       <real>0</real>
-       <real>0</real>
+       <real>15</real>
+       <real>15</real>
       </array>
       <key>isRelativeAnchorPoint</key>
       <true/>
       <key>position</key>
       <array>
-       <real>160</real>
-       <real>222</real>
+       <real>91</real>
+       <real>239</real>
       </array>
       <key>rotation</key>
       <real>0</real>
@@ -381,11 +435,11 @@
       <key>scaleY</key>
       <real>1</real>
       <key>zOrder</key>
-      <integer>1</integer>
+      <integer>0</integer>
       <key>tag</key>
       <integer>-1</integer>
       <key>plistFile</key>
-      <string>Images/SpinningPeas.plist</string>
+      <string>Images/Flower.plist</string>
      </dict>
      <key>children</key>
      <array/>

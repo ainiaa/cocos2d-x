@@ -272,17 +272,10 @@
 		BFEE2E4113E16D2D005C0577 /* ZFont.m in Sources */ = {isa = PBXBuildFile; fileRef = BFEE2E3613E16D2D005C0577 /* ZFont.m */; };
 		D040CC3D14FE24DD00340B56 /* HelloXBrickScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D040CC3914FE24DD00340B56 /* HelloXBrickScene.cpp */; };
 		D040CC3E14FE24DD00340B56 /* xbReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D040CC3B14FE24DD00340B56 /* xbReader.cpp */; };
-		D040CC4D14FE265000340B56 /* example.xb in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4014FE265000340B56 /* example.xb */; };
-		D040CC4E14FE265000340B56 /* bitmapFontTest4.fnt in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4214FE265000340B56 /* bitmapFontTest4.fnt */; };
-		D040CC4F14FE265000340B56 /* bitmapFontTest4.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4314FE265000340B56 /* bitmapFontTest4.png */; };
-		D040CC5014FE265000340B56 /* markerfelt24shadow.fnt in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4414FE265000340B56 /* markerfelt24shadow.fnt */; };
-		D040CC5114FE265000340B56 /* markerfelt24shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4514FE265000340B56 /* markerfelt24shadow.png */; };
-		D040CC5214FE265000340B56 /* b1.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4714FE265000340B56 /* b1.png */; };
-		D040CC5314FE265000340B56 /* b2.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4814FE265000340B56 /* b2.png */; };
-		D040CC5414FE265000340B56 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4914FE265000340B56 /* HelloWorld.png */; };
-		D040CC5514FE265000340B56 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4A14FE265000340B56 /* Icon.png */; };
-		D040CC5614FE265000340B56 /* SpinningPeas.plist in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4B14FE265000340B56 /* SpinningPeas.plist */; };
-		D040CC5714FE265000340B56 /* SpinningPeas.png in Resources */ = {isa = PBXBuildFile; fileRef = D040CC4C14FE265000340B56 /* SpinningPeas.png */; };
+		D05F9C1415048A71007E2DAC /* CCNotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D05F9C1215048A71007E2DAC /* CCNotificationCenter.cpp */; };
+		D05F9C2015048D57007E2DAC /* example.xb in Resources */ = {isa = PBXBuildFile; fileRef = D05F9C1D15048D57007E2DAC /* example.xb */; };
+		D05F9C2115048D57007E2DAC /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = D05F9C1E15048D57007E2DAC /* fonts */; };
+		D05F9C2215048D57007E2DAC /* Images in Resources */ = {isa = PBXBuildFile; fileRef = D05F9C1F15048D57007E2DAC /* Images */; };
 		D4ABB4B313B4395300552E6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4ABB4B213B4395300552E6E /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -561,17 +554,11 @@
 		D040CC3A14FE24DD00340B56 /* HelloXBrickScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloXBrickScene.h; sourceTree = "<group>"; };
 		D040CC3B14FE24DD00340B56 /* xbReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xbReader.cpp; sourceTree = "<group>"; };
 		D040CC3C14FE24DD00340B56 /* xbReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xbReader.h; sourceTree = "<group>"; };
-		D040CC4014FE265000340B56 /* example.xb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = example.xb; path = ../Resource/example.xb; sourceTree = "<group>"; };
-		D040CC4214FE265000340B56 /* bitmapFontTest4.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bitmapFontTest4.fnt; sourceTree = "<group>"; };
-		D040CC4314FE265000340B56 /* bitmapFontTest4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bitmapFontTest4.png; sourceTree = "<group>"; };
-		D040CC4414FE265000340B56 /* markerfelt24shadow.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = markerfelt24shadow.fnt; sourceTree = "<group>"; };
-		D040CC4514FE265000340B56 /* markerfelt24shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markerfelt24shadow.png; sourceTree = "<group>"; };
-		D040CC4714FE265000340B56 /* b1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b1.png; sourceTree = "<group>"; };
-		D040CC4814FE265000340B56 /* b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b2.png; sourceTree = "<group>"; };
-		D040CC4914FE265000340B56 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
-		D040CC4A14FE265000340B56 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		D040CC4B14FE265000340B56 /* SpinningPeas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpinningPeas.plist; sourceTree = "<group>"; };
-		D040CC4C14FE265000340B56 /* SpinningPeas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpinningPeas.png; sourceTree = "<group>"; };
+		D05F9C1215048A71007E2DAC /* CCNotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCNotificationCenter.cpp; sourceTree = "<group>"; };
+		D05F9C1315048A71007E2DAC /* CCNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNotificationCenter.h; sourceTree = "<group>"; };
+		D05F9C1D15048D57007E2DAC /* example.xb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.xb; sourceTree = "<group>"; };
+		D05F9C1E15048D57007E2DAC /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		D05F9C1F15048D57007E2DAC /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		D4ABB4B213B4395300552E6E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -619,10 +606,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				D05F9C1B15048CA6007E2DAC /* Resources */,
 				BF23D4E2143315EB00657E08 /* Classes */,
 				BF5681CC1313A84D0055EEAC /* ios */,
 				BF83517613275F5500F3C033 /* cocos2dx */,
-				D040CC3414FE23DB00340B56 /* Resource */,
 				BF163FB9128E671C0010DC04 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -716,6 +703,7 @@
 		BF83517613275F5500F3C033 /* cocos2dx */ = {
 			isa = PBXGroup;
 			children = (
+				D05F9C1115048A71007E2DAC /* extensions */,
 				BF7B975A13B18860004222DD /* script_support */,
 				BF1E5331135D23A100FD0934 /* text_input_node */,
 				BF1FAE951352F52F007553D9 /* CCDirector.cpp */,
@@ -1131,40 +1119,24 @@
 			path = FontLabel;
 			sourceTree = "<group>";
 		};
-		D040CC3414FE23DB00340B56 /* Resource */ = {
+		D05F9C1115048A71007E2DAC /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D040CC4014FE265000340B56 /* example.xb */,
-				D040CC4114FE265000340B56 /* fonts */,
-				D040CC4614FE265000340B56 /* Images */,
+				D05F9C1215048A71007E2DAC /* CCNotificationCenter.cpp */,
+				D05F9C1315048A71007E2DAC /* CCNotificationCenter.h */,
 			);
-			name = Resource;
+			path = extensions;
 			sourceTree = "<group>";
 		};
-		D040CC4114FE265000340B56 /* fonts */ = {
+		D05F9C1B15048CA6007E2DAC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D040CC4214FE265000340B56 /* bitmapFontTest4.fnt */,
-				D040CC4314FE265000340B56 /* bitmapFontTest4.png */,
-				D040CC4414FE265000340B56 /* markerfelt24shadow.fnt */,
-				D040CC4514FE265000340B56 /* markerfelt24shadow.png */,
+				D05F9C1D15048D57007E2DAC /* example.xb */,
+				D05F9C1E15048D57007E2DAC /* fonts */,
+				D05F9C1F15048D57007E2DAC /* Images */,
 			);
-			name = fonts;
-			path = ../Resource/fonts;
-			sourceTree = "<group>";
-		};
-		D040CC4614FE265000340B56 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				D040CC4714FE265000340B56 /* b1.png */,
-				D040CC4814FE265000340B56 /* b2.png */,
-				D040CC4914FE265000340B56 /* HelloWorld.png */,
-				D040CC4A14FE265000340B56 /* Icon.png */,
-				D040CC4B14FE265000340B56 /* SpinningPeas.plist */,
-				D040CC4C14FE265000340B56 /* SpinningPeas.png */,
-			);
-			name = Images;
-			path = ../Resource/Images;
+			name = Resources;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1382,17 +1354,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D040CC4D14FE265000340B56 /* example.xb in Resources */,
-				D040CC4E14FE265000340B56 /* bitmapFontTest4.fnt in Resources */,
-				D040CC4F14FE265000340B56 /* bitmapFontTest4.png in Resources */,
-				D040CC5014FE265000340B56 /* markerfelt24shadow.fnt in Resources */,
-				D040CC5114FE265000340B56 /* markerfelt24shadow.png in Resources */,
-				D040CC5214FE265000340B56 /* b1.png in Resources */,
-				D040CC5314FE265000340B56 /* b2.png in Resources */,
-				D040CC5414FE265000340B56 /* HelloWorld.png in Resources */,
-				D040CC5514FE265000340B56 /* Icon.png in Resources */,
-				D040CC5614FE265000340B56 /* SpinningPeas.plist in Resources */,
-				D040CC5714FE265000340B56 /* SpinningPeas.png in Resources */,
+				D05F9C2015048D57007E2DAC /* example.xb in Resources */,
+				D05F9C2115048D57007E2DAC /* fonts in Resources */,
+				D05F9C2215048D57007E2DAC /* Images in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,6 +1374,7 @@
 				BF23D4E7143315EB00657E08 /* AppDelegate.cpp in Sources */,
 				D040CC3D14FE24DD00340B56 /* HelloXBrickScene.cpp in Sources */,
 				D040CC3E14FE24DD00340B56 /* xbReader.cpp in Sources */,
+				D05F9C1415048A71007E2DAC /* CCNotificationCenter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

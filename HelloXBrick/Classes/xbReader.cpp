@@ -6,7 +6,8 @@
 
 CCNode* XBReader::nodeFromFile(const char *pFile)
 {
-    XBDictionary *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(pFile);
+    const char* szFullPath = CCFileUtils::fullPathFromRelativePath(pFile);
+    XBDictionary *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(szFullPath);
 
     CCAssert(dict != NULL, "XBReader file not found");
 
