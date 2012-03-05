@@ -177,6 +177,13 @@ int CC_DLL gettimeofday(struct timeval *, struct timezone *);
     #define isnan   qIsNaN
 #endif
 
+#ifdef _WIN32
+struct timeval {
+    long    tv_sec;         /* seconds */
+    long    tv_usec;        /* and microseconds */
+};
+#endif
+
 int CC_DLL gettimeofday(struct timeval *, struct timezone *);
 
 #endif  // CC_TARGET_PLATFORM == CC_PLATFORM_QT
