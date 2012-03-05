@@ -51,6 +51,7 @@ public:
     // Set opengl window
     bool SetWindow(GLWidget* window);
 
+    void resize(int iWidth, int iHeight);
 	CCSize getSize();
 	bool isOpenGLReady();
 	void release();
@@ -58,6 +59,8 @@ public:
 	void swapBuffers();
 	bool canSetContentScaleFactor();
 	void setContentScaleFactor(float contentScaleFactor);
+
+    float getMainScreenScale() { return 1.0f; }
 
 	int setDeviceOrientation(int eOritation);
 	void setViewPortInPoints(float x, float y, float w, float h);

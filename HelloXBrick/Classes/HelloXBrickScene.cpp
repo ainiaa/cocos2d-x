@@ -28,7 +28,7 @@ bool HelloXBrick::init()
 		return false;
 	}
 
-    CCNode* pNode = getSharedReader()->nodeFromFile("example.xb");
+    CCNode* pNode = XBReader::sharedReader()->nodeFromFile("example.xb");
 
 	// add the node as a child to this layer
 	this->addChild(pNode, 0);

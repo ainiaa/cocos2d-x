@@ -1,13 +1,20 @@
-#include "xbreader.h"
-
 #ifdef XBRICK
 #include "helper.h"
 #endif
 
+#include "xbreader.h"
+
+static XBReader s_sharedReader;
+
+XBReader* XBReader::sharedReader()
+{
+    return &s_sharedReader;
+}
+
 CCNode* XBReader::nodeFromFile(const char *pFile)
 {
     const char* szFullPath = CCFileUtils::fullPathFromRelativePath(pFile);
-    XBDictionary *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(szFullPath);
+    CCDictionary<std::string, CCObject*> *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(szFullPath);
 
     CCAssert(dict != NULL, "XBReader file not found");
 
@@ -303,12 +310,4 @@ void XBReader::setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* pro
 
     // Please change last two parameters to yours
     itemImage->initFromNormalImage(normalImage, selectedImage, disabledImage, NULL, NULL);
-}
-
-XBReader* getSharedReader()
-{
-    if (! s_pXBReader)
-        s_pXBReader = new XBReader;
-
-    return s_pXBReader;
 }

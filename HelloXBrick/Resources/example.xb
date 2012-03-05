@@ -176,8 +176,8 @@
         <true/>
         <key>position</key>
         <array>
-         <real>0</real>
-         <real>0</real>
+         <real>10</real>
+         <real>-1</real>
         </array>
         <key>rotation</key>
         <real>0</real>
@@ -199,57 +199,6 @@
         <string>Images/b2.png</string>
         <key>spriteFileSelected</key>
         <string>Images/b1.png</string>
-       </dict>
-       <key>children</key>
-       <array/>
-      </dict>
-      <dict>
-       <key>class</key>
-       <string>CCLabelBMFont</string>
-       <key>name</key>
-       <string></string>
-       <key>properties</key>
-       <dict>
-        <key>anchorPoint</key>
-        <array>
-         <real>0.5</real>
-         <real>0.5</real>
-        </array>
-        <key>contentSize</key>
-        <array>
-         <real>46</real>
-         <real>26</real>
-        </array>
-        <key>isRelativeAnchorPoint</key>
-        <true/>
-        <key>position</key>
-        <array>
-         <real>0</real>
-         <real>0</real>
-        </array>
-        <key>rotation</key>
-        <real>10.5</real>
-        <key>visible</key>
-        <true/>
-        <key>scaleX</key>
-        <real>1.11766</real>
-        <key>scaleY</key>
-        <real>1</real>
-        <key>zOrder</key>
-        <integer>0</integer>
-        <key>tag</key>
-        <integer>-1</integer>
-        <key>color</key>
-        <array>
-         <integer>255</integer>
-         <integer>255</integer>
-         <integer>255</integer>
-         <integer>255</integer>
-        </array>
-        <key>fontFile</key>
-        <string>fonts/markerfelt24shadow.fnt</string>
-        <key>string</key>
-        <string>Back</string>
        </dict>
        <key>children</key>
        <array/>
@@ -349,57 +298,6 @@
        <key>children</key>
        <array/>
       </dict>
-      <dict>
-       <key>class</key>
-       <string>CCLabelBMFont</string>
-       <key>name</key>
-       <string></string>
-       <key>properties</key>
-       <dict>
-        <key>anchorPoint</key>
-        <array>
-         <real>0.5</real>
-         <real>0.5</real>
-        </array>
-        <key>contentSize</key>
-        <array>
-         <real>80</real>
-         <real>26</real>
-        </array>
-        <key>isRelativeAnchorPoint</key>
-        <true/>
-        <key>position</key>
-        <array>
-         <real>0</real>
-         <real>0</real>
-        </array>
-        <key>rotation</key>
-        <real>-16.5</real>
-        <key>visible</key>
-        <true/>
-        <key>scaleX</key>
-        <real>0.999757</real>
-        <key>scaleY</key>
-        <real>1</real>
-        <key>zOrder</key>
-        <integer>0</integer>
-        <key>tag</key>
-        <integer>-1</integer>
-        <key>color</key>
-        <array>
-         <integer>255</integer>
-         <integer>255</integer>
-         <integer>255</integer>
-         <integer>255</integer>
-        </array>
-        <key>fontFile</key>
-        <string>fonts/markerfelt24shadow.fnt</string>
-        <key>string</key>
-        <string>Forward</string>
-       </dict>
-       <key>children</key>
-       <array/>
-      </dict>
      </array>
     </dict>
     <dict>
@@ -416,15 +314,15 @@
       </array>
       <key>contentSize</key>
       <array>
-       <real>15</real>
-       <real>15</real>
+       <real>0</real>
+       <real>0</real>
       </array>
       <key>isRelativeAnchorPoint</key>
       <true/>
       <key>position</key>
       <array>
-       <real>91</real>
-       <real>239</real>
+       <real>169.91</real>
+       <real>228.71</real>
       </array>
       <key>rotation</key>
       <real>0</real>

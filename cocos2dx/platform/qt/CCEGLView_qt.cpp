@@ -111,6 +111,12 @@ bool CCEGLView::SetWindow(GLWidget* window)
     return true;
 }
 
+void CCEGLView::resize(int iWidth, int iHeight)
+{
+    m_sSizeInPoint.width = iWidth;
+    m_sSizeInPoint.height = iHeight;
+}
+
 CCSize CCEGLView::getSize()
 {
     return CCSize((float)(m_sSizeInPoint.width), (float)(m_sSizeInPoint.height));

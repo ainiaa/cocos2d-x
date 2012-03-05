@@ -10,6 +10,8 @@ typedef CCDictionary<std::string, CCObject*> XBDictionary;
 class XBReader
 {
 public:
+    static XBReader* sharedReader();
+
     CCNode* nodeFromFile(const char *pFile);
     CCNode* nodeFromDictionary(XBDictionary *dictionary);
 
@@ -153,8 +155,5 @@ public:
     void setPropForMenuItem(CCMenuItem* menuItem, XBDictionary* props);
     void setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* props);
 };
-
-static XBReader* s_pXBReader;
-XBReader* getSharedReader();
 
 #endif // XBREADER_H
