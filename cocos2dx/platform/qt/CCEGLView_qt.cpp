@@ -111,12 +111,6 @@ bool CCEGLView::SetWindow(GLWidget* window)
     return true;
 }
 
-void CCEGLView::resize(int iWidth, int iHeight)
-{
-    m_sSizeInPoint.width = iWidth;
-    m_sSizeInPoint.height = iHeight;
-}
-
 CCSize CCEGLView::getSize()
 {
     return CCSize((float)(m_sSizeInPoint.width), (float)(m_sSizeInPoint.height));
@@ -132,6 +126,8 @@ void CCEGLView::release()
     CC_SAFE_DELETE(m_pSet);
     CC_SAFE_DELETE(m_pTouch);
     CC_SAFE_DELETE(m_pDelegate);
+
+    s_pMainWindow = NULL;
 
     // delete the opengl window only when it is created by CCEGLView::Create()
     if (! m_bIsSubWindow)
