@@ -23,7 +23,7 @@ bool AppDelegate::initInstance() {
 		// The HelloXBrick is designed as HVGA.
 		CCEGLView * pMainWnd = new CCEGLView();
 		CC_BREAK_IF(! pMainWnd
-				|| ! pMainWnd->Create(TEXT("cocos2d: Hello XBrick"), 320, 480));
+				|| ! pMainWnd->Create(TEXT("cocos2d: Hello XBrick"), 480, 320));
 
 #endif  // CC_PLATFORM_WIN32
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

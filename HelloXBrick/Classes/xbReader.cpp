@@ -18,13 +18,6 @@ CCNode* XBReader::nodeFromFile(const char *pFile)
 
     CCAssert(dict != NULL, "XBReader file not found");
 
-    ccDeviceOrientation orientation = static_cast<ccDeviceOrientation>(atoi(valueForKey("orientation", dict)));
-    CCDirector::sharedDirector()->setDeviceOrientation(orientation);
-
-#ifdef XBRICK
-    Helper::getSingleton().setOrientation(orientation);
-#endif
-
     XBDictionary *graph = (XBDictionary*)dict->objectForKey("graph");
 
     CCAssert(graph != NULL, "graph element is empty");
@@ -37,7 +30,6 @@ CCNode* XBReader::nodeFromFile(const char *pFile)
 CCNode* XBReader::nodeFromDictionary(XBDictionary *dictionary)
 {
     const char* className = valueForKey("class", dictionary);
-    const char* nodeName = valueForKey("name", dictionary);
     XBArray *children = (XBArray*)dictionary->objectForKey("children");
     XBDictionary *props = (XBDictionary*)dictionary->objectForKey("properties");
 
@@ -132,6 +124,7 @@ CCNode* XBReader::nodeFromDictionary(XBDictionary *dictionary)
     node->autorelease();
 
 #ifdef XBRICK
+    const char* nodeName = valueForKey("name", dictionary);
     Helper::getSingleton().setNodeName(node, nodeName);
 #endif
 
