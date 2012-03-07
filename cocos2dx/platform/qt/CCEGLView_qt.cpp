@@ -71,7 +71,7 @@ CCEGLView::~CCEGLView()
 
 bool CCEGLView::Create(int iWidth, int iHeight)
 {
-    m_window = new GLWidget(iWidth,iHeight);
+    m_window = new GLWidget(iWidth,iHeight, CCDirector::sharedDirector());
 
     m_window->setMouseMoveFunc(&cocos2d::mouseMove);
     m_window->setMousePressFunc(&cocos2d::mousePress);

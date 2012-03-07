@@ -489,7 +489,7 @@ protected:
  
  @since v0.8.2
  */
-class CCDisplayLinkDirector : public CCDirector
+class CC_DLL CCDisplayLinkDirector : public CCDirector
 {
 public:
 	CCDisplayLinkDirector(void) 

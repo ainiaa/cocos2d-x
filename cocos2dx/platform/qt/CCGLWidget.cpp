@@ -1,11 +1,11 @@
-#include "CCDirector.h"
 #include "CCGLWidget.h"
 #include <QtCore/QTimer>
 
-GLWidget::GLWidget(int width, int height, QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
+GLWidget::GLWidget(int width, int height, CCDirector* director, QWidget *parent) : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
   , mouseMoveFunc(NULL)
   , mousePressFunc(NULL)
   , mouseReleaseFunc(NULL)
+  , m_director(director)
 {
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -55,6 +55,8 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *event)
 
 void GLWidget::update()
 {
-    glewInit();
-    cocos2d::CCDirector::sharedDirector()->mainLoop();
+	glewInit();
+	
+    if (m_director)
+        m_director->mainLoop();
 }
