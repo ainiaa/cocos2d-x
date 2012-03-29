@@ -1,12 +1,10 @@
 <plist version="1.0">
  <dict>
-  <key>orientation</key>
-  <integer>2</integer>
-  <key>width</key>
+  <key>stageWidth</key>
   <integer>480</integer>
-  <key>height</key>
+  <key>stageHeight</key>
   <integer>320</integer>
-  <key>graph</key>
+  <key>nodeGraph</key>
   <dict>
    <key>class</key>
    <string>CCLayer</string>
@@ -47,7 +45,7 @@
     <false/>
     <key>accelerometerEnabled</key>
     <false/>
-    <key>keypadEnabled</key>
+    <key>keyboardEnabled</key>
     <false/>
    </dict>
    <key>children</key>
@@ -66,12 +64,14 @@
       </array>
       <key>contentSize</key>
       <array>
-       <real>480</real>
-       <real>320</real>
+       <real>32</real>
+       <real>32</real>
       </array>
       <key>isRelativeAnchorPoint</key>
-      <false/>
-      <key>position</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>TopLeft</string>
+      <key>offset</key>
       <array>
        <real>0</real>
        <real>0</real>
@@ -105,7 +105,427 @@
       <key>flipY</key>
       <false/>
       <key>spriteFile</key>
-      <string>Images/HelloWorld.png</string>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>Top</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>Left</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>Center</string>
+      <key>offset</key>
+      <array>
+       <real>1</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>Right</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>BottomLeft</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>Bottom</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
+     </dict>
+     <key>children</key>
+     <array/>
+    </dict>
+    <dict>
+     <key>class</key>
+     <string>CCSprite</string>
+     <key>name</key>
+     <string></string>
+     <key>properties</key>
+     <dict>
+      <key>anchorPoint</key>
+      <array>
+       <real>0.5</real>
+       <real>0.5</real>
+      </array>
+      <key>contentSize</key>
+      <array>
+       <real>32</real>
+       <real>32</real>
+      </array>
+      <key>isRelativeAnchorPoint</key>
+      <true/>
+      <key>viewPoint</key>
+      <string>BottomRight</string>
+      <key>offset</key>
+      <array>
+       <real>0</real>
+       <real>0</real>
+      </array>
+      <key>rotation</key>
+      <real>0</real>
+      <key>visible</key>
+      <true/>
+      <key>scaleX</key>
+      <real>1</real>
+      <key>scaleY</key>
+      <real>1</real>
+      <key>zOrder</key>
+      <integer>0</integer>
+      <key>tag</key>
+      <integer>-1</integer>
+      <key>blendFunc</key>
+      <array>
+       <integer>1</integer>
+       <integer>771</integer>
+      </array>
+      <key>color</key>
+      <array>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+       <integer>255</integer>
+      </array>
+      <key>flipX</key>
+      <false/>
+      <key>flipY</key>
+      <false/>
+      <key>spriteFile</key>
+      <string>Images/CloseNormal.png</string>
      </dict>
      <key>children</key>
      <array/>
@@ -119,8 +539,8 @@
      <dict>
       <key>anchorPoint</key>
       <array>
-       <real>0.5</real>
-       <real>0.5</real>
+       <real>0</real>
+       <real>0</real>
       </array>
       <key>contentSize</key>
       <array>
@@ -131,26 +551,26 @@
       <false/>
       <key>position</key>
       <array>
-       <real>46</real>
-       <real>33</real>
+       <real>240</real>
+       <real>160</real>
       </array>
       <key>rotation</key>
       <real>0</real>
       <key>visible</key>
       <true/>
       <key>scaleX</key>
-      <real>1</real>
+      <real>1.06667</real>
       <key>scaleY</key>
-      <real>1</real>
+      <real>0.933333</real>
       <key>zOrder</key>
       <integer>0</integer>
       <key>tag</key>
-      <integer>-1</integer>
+      <integer>10</integer>
       <key>touchEnabled</key>
       <true/>
       <key>accelerometerEnabled</key>
       <false/>
-      <key>keypadEnabled</key>
+      <key>keyboardEnabled</key>
       <false/>
      </dict>
      <key>children</key>
@@ -159,7 +579,7 @@
        <key>class</key>
        <string>CCMenuItemImage</string>
        <key>name</key>
-       <string></string>
+       <string>closeMenuItem</string>
        <key>properties</key>
        <dict>
         <key>anchorPoint</key>
@@ -169,103 +589,8 @@
         </array>
         <key>contentSize</key>
         <array>
-         <real>79</real>
-         <real>46</real>
-        </array>
-        <key>isRelativeAnchorPoint</key>
-        <true/>
-        <key>position</key>
-        <array>
-         <real>10</real>
-         <real>-1</real>
-        </array>
-        <key>rotation</key>
-        <real>0</real>
-        <key>visible</key>
-        <true/>
-        <key>scaleX</key>
-        <real>1</real>
-        <key>scaleY</key>
-        <real>1</real>
-        <key>zOrder</key>
-        <integer>0</integer>
-        <key>tag</key>
-        <integer>-1</integer>
-        <key>Enabled</key>
-        <true/>
-        <key>spriteFileNormal</key>
-        <string>Images/b1.png</string>
-        <key>spriteFileDisabled</key>
-        <string>Images/b2.png</string>
-        <key>spriteFileSelected</key>
-        <string>Images/b1.png</string>
-       </dict>
-       <key>children</key>
-       <array/>
-      </dict>
-     </array>
-    </dict>
-    <dict>
-     <key>class</key>
-     <string>CCMenu</string>
-     <key>name</key>
-     <string></string>
-     <key>properties</key>
-     <dict>
-      <key>anchorPoint</key>
-      <array>
-       <real>0.5</real>
-       <real>0.5</real>
-      </array>
-      <key>contentSize</key>
-      <array>
-       <real>15</real>
-       <real>15</real>
-      </array>
-      <key>isRelativeAnchorPoint</key>
-      <false/>
-      <key>position</key>
-      <array>
-       <real>414</real>
-       <real>28</real>
-      </array>
-      <key>rotation</key>
-      <real>0</real>
-      <key>visible</key>
-      <true/>
-      <key>scaleX</key>
-      <real>1</real>
-      <key>scaleY</key>
-      <real>1</real>
-      <key>zOrder</key>
-      <integer>0</integer>
-      <key>tag</key>
-      <integer>-1</integer>
-      <key>touchEnabled</key>
-      <true/>
-      <key>accelerometerEnabled</key>
-      <false/>
-      <key>keypadEnabled</key>
-      <false/>
-     </dict>
-     <key>children</key>
-     <array>
-      <dict>
-       <key>class</key>
-       <string>CCMenuItemImage</string>
-       <key>name</key>
-       <string></string>
-       <key>properties</key>
-       <dict>
-        <key>anchorPoint</key>
-        <array>
-         <real>0.5</real>
-         <real>0.5</real>
-        </array>
-        <key>contentSize</key>
-        <array>
-         <real>79</real>
-         <real>46</real>
+         <real>32</real>
+         <real>32</real>
         </array>
         <key>isRelativeAnchorPoint</key>
         <true/>
@@ -286,61 +611,19 @@
         <integer>0</integer>
         <key>tag</key>
         <integer>-1</integer>
-        <key>Enabled</key>
+        <key>isEnabled</key>
         <true/>
         <key>spriteFileNormal</key>
-        <string>Images/f1.png</string>
+        <string>Images/CloseNormal.png</string>
         <key>spriteFileDisabled</key>
-        <string>Images/f2.png</string>
+        <string>Images/CloseNormal.png</string>
         <key>spriteFileSelected</key>
-        <string>Images/f2.png</string>
+        <string>Images/CloseNormal.png</string>
        </dict>
        <key>children</key>
        <array/>
       </dict>
      </array>
-    </dict>
-    <dict>
-     <key>class</key>
-     <string>CCParticleSystem</string>
-     <key>name</key>
-     <string></string>
-     <key>properties</key>
-     <dict>
-      <key>anchorPoint</key>
-      <array>
-       <real>0</real>
-       <real>0</real>
-      </array>
-      <key>contentSize</key>
-      <array>
-       <real>0</real>
-       <real>0</real>
-      </array>
-      <key>isRelativeAnchorPoint</key>
-      <true/>
-      <key>position</key>
-      <array>
-       <real>169.91</real>
-       <real>228.71</real>
-      </array>
-      <key>rotation</key>
-      <real>0</real>
-      <key>visible</key>
-      <true/>
-      <key>scaleX</key>
-      <real>1</real>
-      <key>scaleY</key>
-      <real>1</real>
-      <key>zOrder</key>
-      <integer>0</integer>
-      <key>tag</key>
-      <integer>-1</integer>
-      <key>plistFile</key>
-      <string>Images/Flower.plist</string>
-     </dict>
-     <key>children</key>
-     <array/>
     </dict>
    </array>
   </dict>

@@ -28,10 +28,15 @@ bool HelloXBrick::init()
 		return false;
 	}
 
-    CCNode* pNode = XBReader::sharedReader()->nodeFromFile("example.xb");
+ //   CCNode* pNode = XBReader::sharedReader()->nodeFromFile("example.xb");
 
-	// add the node as a child to this layer
-	this->addChild(pNode, 0);
+	//// add the node as a child to this layer
+	//this->addChild(pNode, 0);
+	//XBReader::sharedReader()->relayout();
+
+	CCSprite* pBL = CCSprite::spriteWithFile("CloseNormal.png");
+	pBL->setPosition(ccp(240, 160));
+	addChild(pBL);
 	
 	return true;
 }

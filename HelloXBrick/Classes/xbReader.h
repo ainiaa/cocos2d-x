@@ -4,6 +4,21 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+class VisibleRect
+{
+public:
+    virtual const CCRect& rect() = 0;
+    const CCPoint& center();
+    const CCPoint& top();
+    const CCPoint& topRight();
+    const CCPoint& right();
+    const CCPoint& bottomRight();
+    const CCPoint& bottom();
+    const CCPoint& bottomLeft();
+    const CCPoint& left();
+    const CCPoint& topLeft();
+};
+
 typedef CCMutableArray<CCObject*> XBArray;
 typedef CCDictionary<std::string, CCObject*> XBDictionary;
 
@@ -12,8 +27,13 @@ class XBReader
 public:
     static XBReader* sharedReader();
 
+    XBReader();
+
+    CCPoint getViewPointPosition(const char* viewPoint);
     CCNode* nodeFromFile(const char *pFile);
     CCNode* nodeFromDictionary(XBDictionary *dictionary);
+    void    setVisibleRect(VisibleRect* rect){m_visibleRect = rect;}
+    void    relayout();
 
     /** return the string found by key in dict.
     @return "" if not found; return the string if found.
@@ -154,6 +174,12 @@ public:
     void setPropForMenu(CCMenu* menu, XBDictionary* props);
     void setPropForMenuItem(CCMenuItem* menuItem, XBDictionary* props);
     void setPropForItemImage(CCMenuItemImage* itemImage, XBDictionary* props);
+
+private:
+    std::map<CCNode*, std::string> m_viewPoints;
+    std::map<CCNode*, CCPoint> m_viewPointOffset;
+
+    VisibleRect* m_visibleRect;
 };
 
 #endif // XBREADER_H
